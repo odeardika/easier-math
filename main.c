@@ -14,7 +14,7 @@ int main(){
     char pilihan;
     printf("Masukan Pilihan : ");
     scanf("%c", &pilihan);
-    while(getchar() != '\n');
+    while(getchar() != '\n'); // menghilangkan enter otomatis
     switch (pilihan)
     {
     case '1':
@@ -37,7 +37,7 @@ double kalkulator(){
     double awal, penambah;
     printf("Masukan Angka Pertama : ");
     scanf("%lf", &awal);
-    while (1)
+    while (1) // kondisi = 1 supaya selalu looping
     {
         printf("Masukan Pilihan ( + - * / = ) : ");
         while(getchar() != '\n');
