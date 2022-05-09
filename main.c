@@ -18,8 +18,7 @@ int main(){
     switch (pilihan)
     {
     case '1':
-        hasil = kalkulator();
-        printf("Hasil : %.2lf", hasil);
+        kalkulator();
         break;
     case '2':
         MBDatar();
@@ -38,15 +37,44 @@ double kalkulator(){
     double awal, penambah;
     printf("Masukan Angka Pertama : ");
     scanf("%lf", &awal);
-    printf("Masukan Pilihan ( + - * / ) : ");
-    scanf("%c", &pil);
-    printf("Masukan Angka Penambah : ");
-    scanf("%lf", &penambah);
+    while (1)
+    {
+        printf("Masukan Pilihan ( + - * / = ) : ");
+        while(getchar() != '\n');
+        scanf("%c", &pil);
+        if(pil == '+')
+        {
+            printf("Masukan Angka Penambah : ");
+            scanf("%lf", &penambah);
+            awal = awal + penambah;
+        } 
+        if(pil == '-')
+        {
+            printf("Masukan Angka Penambah : ");
+            scanf("%lf", &penambah);
+            awal = awal - penambah;
+        }
+        if(pil == '*')
+        {
+            printf("Masukan Angka Penambah : ");
+            scanf("%lf", &penambah);
+            awal = awal * penambah;
+        }
+        if(pil == '/')
+        {
+            printf("Masukan Angka Penambah : ");
+            scanf("%lf", &penambah);
+            awal = awal / penambah;
+        }
+        if(pil == '=')
+        {
+            goto end;
+        }
+    printf("%.2lf\n", awal);
+    }
+    end :
+    printf("%.2lf\n", awal);
 
-    if(pil == '+') return awal + penambah;
-    if(pil == '-') return awal - penambah;
-    if(pil == '*') return awal * penambah;
-    if(pil == '/') return awal / penambah;
 }
 
 void MBDatar(){
