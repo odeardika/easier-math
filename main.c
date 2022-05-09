@@ -50,8 +50,8 @@ double kalkulator(){
 }
 
 void MBDatar(){
-    char pilihan;
-    double sisi,luas,keliling;
+    char pilihan,rumus;
+    double sisi,panjang,lebar,luas,keliling;
     printf("Menu :\n"
            "1. Persegi\n"
            "2. Persegi Panjang\n"
@@ -67,7 +67,7 @@ void MBDatar(){
     switch (pilihan)
     {
     case '1':
-        char rumus;
+        
         printf("Menu Persegi\n"
                "1. Mencari Luas\n"
                "2. Mencari Keliling\n"
@@ -105,7 +105,82 @@ void MBDatar(){
                     break;
                }
         break;
-    
+    case '2':
+        printf("Menu Persegi Panjang\n"
+               "1. Mencari Luas\n"
+               "2. Mencari Keliling\n"
+               "3. Mencari panjang (dengan luas)\n"
+               "4. Mencari panjang (dengan keliling)\n"
+               "5. Mencari lebar (dengan luas)\n"
+               "6. Mencari lebar (dengan keliling)\n"
+               "Masukan Pilihan : ");
+                scanf("%c", &rumus);
+                switch (rumus)
+                {
+                case '1':
+                    printf("Masukan  Panjang = ");
+                    scanf("%lf", &panjang);
+                    printf("Masukan  Lebar = ");
+                    scanf("%lf", &lebar);
+                    luas = panjang * lebar;
+                    printf("Luas = %.2lf", luas);
+                    break;
+                case '2':
+                    printf("Masukan  Panjang = ");
+                    scanf("%lf", &panjang);
+                    printf("Masukan  Lebar = ");
+                    scanf("%lf", &lebar);
+                    keliling = ( panjang + lebar ) * 2;
+                    printf("Keliling = %.2lf", keliling);
+                    break;
+                case '3':
+                    printf("Masukan Luas = ");
+                    scanf("%lf", &luas);
+                    printf("Masukan  Lebar = ");
+                    scanf("%lf", &lebar);
+                    panjang = luas / lebar;
+                    printf("Panjang = %.2lf", panjang);
+                    break;
+                case '4':
+                    printf("Masukan Luas = ");
+                    scanf("%lf", &keliling);
+                    printf("Masukan  Lebar = ");
+                    scanf("%lf", &lebar);
+                    panjang = ( keliling / 2 ) - lebar;
+                    printf("Panjang = %.2lf", panjang);
+                    break;
+                case '5':
+                    printf("Masukan Luas = ");
+                    scanf("%lf", &luas);
+                    printf("Masukan  panjang = ");
+                    scanf("%lf", &panjang);
+                    lebar = luas / panjang;
+                    printf("Panjang = %.2lf", lebar);
+                    break;
+                case '6':
+                    printf("Masukan Luas = ");
+                    scanf("%lf", &luas);
+                    printf("Masukan  Lebar = ");
+                    scanf("%lf", &panjang);
+                    lebar = ( keliling / 2 ) - panjang;
+                    printf("Panjang = %.2lf", lebar);
+                    break;
+                default:
+                    break;
+               }
+        break;
+    case '3':
+        break;
+    case '4':
+        break;
+    case '5':
+        break;
+    case '6':
+        break;
+    case '7':
+        break;
+    case '8':
+        break;
     default:
         break;
     }
