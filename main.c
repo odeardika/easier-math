@@ -10,7 +10,8 @@ int main(){
     printf("Menu :\n"
            "1. Kalkulator\n"
            "2. Bangun Datar\n"
-           "3. Bangun Ruang\n");
+           "3. Bangun Ruang\n"
+           "4. Matriks\n");
     char pilihan;
     printf("Masukan Pilihan : ");
     scanf("%c", &pilihan);
@@ -34,7 +35,10 @@ int main(){
 
 double kalkulator(){
     char pil;
-    double awal, penambah;
+    int banyak = 1;
+    double awal, penambah, hasil;
+    FILE *Fptr = fopen ("History_Kalkulator.txt", "a");
+    fprintf(Fptr, "===========================");
     printf("Masukan Angka Pertama : ");
     scanf("%lf", &awal);
     while (1) // kondisi = 1 supaya selalu looping
@@ -46,33 +50,41 @@ double kalkulator(){
         {
             printf("Masukan Angka Penambah : ");
             scanf("%lf", &penambah);
-            awal = awal + penambah;
+            hasil = awal + penambah;
+            fprintf(Fptr, "\n %.2lf + %.2lf = %.2lf",awal, penambah,hasil);
         } 
         if(pil == '-')
         {
             printf("Masukan Angka Penambah : ");
             scanf("%lf", &penambah);
-            awal = awal - penambah;
+            hasil = awal - penambah;
+            fprintf(Fptr, "\n %.2lf - %.2lf = %.2lf",awal,penambah,hasil);
         }
         if(pil == '*')
         {
             printf("Masukan Angka Penambah : ");
             scanf("%lf", &penambah);
-            awal = awal * penambah;
+            hasil = awal * penambah;
+            fprintf(Fptr, "\n %.2lf x %.2lf = %.2lf",awal, penambah,hasil);
         }
         if(pil == '/')
         {
             printf("Masukan Angka Penambah : ");
             scanf("%lf", &penambah);
-            awal = awal / penambah;
+            hasil = awal / penambah;
+            fprintf(Fptr, "\n %.2lf : %.2lf = %.2lf",awal, penambah,hasil);
         }
         if(pil == '=')
         {
             goto end;
         }
-    printf("%.2lf\n", awal);
+    printf("%.2lf\n", hasil);
+    banyak++;
+    awal = hasil;
     }
     end :
+    fprintf(Fptr, "\n===========================");
+    fclose(Fptr);
     printf("%.2lf\n", awal);
 
 }
