@@ -1,30 +1,39 @@
 #include <stdio.h>
 #include <math.h>
 
-double kalkulator();
-void MBDatar(); //Menu Bangun Datar
-void MBRuang(); //Menu Bangun Ruang
+void kalkulator();
+void ekstra_kalkulator(); 
+void menu_bangun_datar(); //Menu Bangun Datar
+void menu_bangun_ruang(); //Menu Bangun Ruang
 
 int main(){
     double hasil;
     printf("Menu :\n"
            "1. Kalkulator\n"
            "2. Bangun Datar\n"
-           "3. Bangun Ruang\n");
-    char pilihan;
+           "3. Bangun Ruang\n"
+           "4. Matriks\n");
+    char pilihan,kal;
     printf("Masukan Pilihan : ");
     scanf("%c", &pilihan);
     while(getchar() != '\n'); // menghilangkan enter otomatis
     switch (pilihan)
     {
     case '1':
-        kalkulator();
+        printf("Pilih Kalkulator\n"
+               "1. Kalkulator\n"
+               "2. Kalkulator Ekstra\n"
+               "Pilihan : ");
+        scanf("%c",&kal);
+        while(getchar() != '\n');
+        if(kal == '1')ekstra_kalkulator(1);
+        if(kal == '2')ekstra_kalkulator(2);
         break;
     case '2':
-        MBDatar();
+        menu_bangun_datar();
         break;
     case '3' :
-        MBRuang();
+        menu_bangun_ruang();
         break;
     default:
         break;
@@ -32,52 +41,97 @@ int main(){
     return 0;
 }
 
-double kalkulator(){
+void ekstra_kalkulator(int a){
     char pil;
-    double awal, penambah;
+    int banyak = 1;
+    double awal, penambah, hasil;
+    if(a == 1) //kalkulator biasa
+    {
+        printf("Menu Kalkulator : \n");
+    }
+    if(a == 2) //kalkulator ekstra
+    {
+        printf("Menu Kalkulator Ekstra :\n"
+           "===================================================================\n"
+           "|   + -> pertambah  |   * -> perkalian    |   ^ -> perpangkatan   |\n"
+           "|   - -> pengurang  |   / -> perbagian    |   v -> pengakaran     |\n"
+           "|   s -> sinus(sin) |   c -> kosinus(cos) |   t -> tangen(tan)    |\n"
+           "|   S -> cosecan    |   C -> secan        |   T -> cotangen       |\n"
+           "|   % -> persen     |   l -> logaritma    |   = -> hasil          |\n"
+           "===================================================================\n");
+    }
+    FILE *Fptr = fopen ("History_Kalkulator.txt", "a");
+    fprintf(Fptr, "===========================");
     printf("Masukan Angka Pertama : ");
     scanf("%lf", &awal);
     while (1) // kondisi = 1 supaya selalu looping
     {
-        printf("Masukan Pilihan ( + - * / = ) : ");
+        printf("Masukan Pilihan : ");
         while(getchar() != '\n');
         scanf("%c", &pil);
         if(pil == '+')
         {
             printf("Masukan Angka Penambah : ");
             scanf("%lf", &penambah);
-            awal = awal + penambah;
+            hasil = awal + penambah;
+            fprintf(Fptr, "\n %.2lf + %.2lf = %.2lf",awal, penambah,hasil);
         } 
         if(pil == '-')
         {
             printf("Masukan Angka Penambah : ");
             scanf("%lf", &penambah);
-            awal = awal - penambah;
+            hasil = awal - penambah;
+            fprintf(Fptr, "\n %.2lf - %.2lf = %.2lf",awal,penambah,hasil);
         }
         if(pil == '*')
         {
             printf("Masukan Angka Penambah : ");
             scanf("%lf", &penambah);
-            awal = awal * penambah;
+            hasil = awal * penambah;
+            fprintf(Fptr, "\n %.2lf x %.2lf = %.2lf",awal, penambah,hasil);
         }
         if(pil == '/')
         {
             printf("Masukan Angka Penambah : ");
             scanf("%lf", &penambah);
-            awal = awal / penambah;
+            hasil = awal / penambah;
+            fprintf(Fptr, "\n %.2lf : %.2lf = %.2lf",awal, penambah,hasil);
+        }
+        if(pil == '^')
+        {
+            printf("Masukan Pangkat : ");
+            scanf("%lf", &penambah);
+            hasil = pow(awal,penambah);
+            fprintf(Fptr, "\n %.2lf^%.2lf = %.2lf",awal, penambah,hasil);
+        }
+        if(pil == 'v')
+        {
+            hasil = sqrt(awal);
+            fprintf(Fptr, "\n  ______");
+            fprintf(Fptr, "\n\\/%.2lf   = %.2lf", awal,hasil);
+            
+        }
+        if(pil == '%')
+        {
+            hasil = awal/100;
+            fprintf(Fptr, "\n%.2lf% = %.2lf", awal,hasil);
         }
         if(pil == '=')
         {
             goto end;
         }
-    printf("%.2lf\n", awal);
+    printf("%.2lf\n", hasil);
+    banyak++;
+    awal = hasil;
     }
     end :
+    fprintf(Fptr, "\n===========================\n");
+    fclose(Fptr);
     printf("%.2lf\n", awal);
 
 }
 
-void MBDatar(){
+void menu_bangun_datar(){
     char pilihan,rumus;
     double sisi,panjang,lebar,luas,keliling;
     printf("Menu :\n"
@@ -215,7 +269,7 @@ void MBDatar(){
 
 }
 
-void MBRuang(){
+void menu_bangun_ruang(){
     printf("Menu :\n"
            "1. Kubus\n"
            "2. Balok\n"
