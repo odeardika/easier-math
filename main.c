@@ -9,8 +9,8 @@ void menu_bangun_ruang(); //Menu Bangun Ruang
 int matriks();
 
 int main(){
-    system("cls");
     double hasil;
+    system("cls");
     printf("Menu :\n"
            "1. Kalkulator\n"
            "2. Bangun Datar\n"
@@ -288,23 +288,21 @@ void menu_bangun_ruang(){
 
 float dtrm(int pilihan, float matriks1[4][4]){ // Untuk determinan
 	float dtr=0;
-	if(pilihan==1){
-		dtr += matriks1[0][0]*matriks1[1][1]-matriks1[0][1]*matriks1[1][0];
-	}else{
+	if(pilihan==1) dtr += matriks1[0][0]*matriks1[1][1]-matriks1[0][1]*matriks1[1][0];
+	else{
 		for(int i=0; i<3; i++){
 			dtr += (matriks1[0][i]*(matriks1[1][(i+1)%3]*matriks1[2][(i+2)%3]-matriks1[1][(i+2)%3]*matriks1[2][(i+1)%3]));
 		}
 	}
 	return dtr;
 }
+
 int jumlahkurang(int pil){ // Untuk Penjumlahan dan Pengurangan Matriks
 	int baris, kolom, banyak;
 	printf("Masukkan jumlah baris matriks : "); scanf("%d", &baris);
 	printf("Masukkan jumlah kolom matriks : "); scanf("%d", &kolom);
 	printf("Masukkan banyak matriks yang ingin dioperasikan : "); scanf("%d", &banyak);
-	if(baris==0||kolom==0||banyak==0){
-		return matriks();
-	}
+	if(baris==0||kolom==0||banyak==0) return matriks();
 	int matriks[banyak][baris][kolom];
 	for(int i=0; i<banyak; i++){
 		printf("\nMASUKKAN ANGKA MATRIKS KE-%d :\n", i+1);
@@ -330,7 +328,7 @@ int jumlahkurang(int pil){ // Untuk Penjumlahan dan Pengurangan Matriks
 				}
 			}
 		}
-		printf("\nHasil penjumlahan matriks :\n");
+		printf("\nHasil Penjumlahan Matriks :\n");
 		for(int j=0; j<baris; j++){
 			for(int k=0; k<kolom; k++){
 				printf("%d\t", matriks[banyak-1][j][k]);
@@ -345,7 +343,7 @@ int jumlahkurang(int pil){ // Untuk Penjumlahan dan Pengurangan Matriks
 				}
 			}
 		}
-		printf("\nHasil pengurangan matriks diatas:\n");
+		printf("\nHasil Pengurangan Matriks :\n");
 		for(int j=0; j<baris; j++){
 			for(int k=0; k<kolom; k++){
 				printf("%d\t", matriks[banyak-1][j][k]);
@@ -354,18 +352,16 @@ int jumlahkurang(int pil){ // Untuk Penjumlahan dan Pengurangan Matriks
 		}
 	}
 }
+
 int kali(){ // Untuk Perkalian Matriks
 	int baris1, kolom1, baris2, kolom2;
 	printf("MATRIKS 1\nMasukkan banyak baris : "); scanf("%d", &baris1);
 	printf("Masukkan banyak kolom : "); scanf("%d", &kolom1);
 	printf("\nMATRIKS 2\nMasukkan banyak baris : "); scanf("%d", &baris2);
 	printf("Masukkan banyak kolom : "); scanf("%d", &kolom2);
-	if(baris1==0||kolom1==0||baris2==0||kolom2==0){
-		return matriks();
-	}
-	if(kolom1!=baris2){
-		printf("\nSYARAT PERKALIAN MATRIKS : BANYAK KOLOM MATRIKS 1 = BANYAK BARIS MATRIKS 2!");
-	}else{
+	if(baris1==0||kolom1==0||baris2==0||kolom2==0) return matriks();
+	if(kolom1!=baris2) printf("\nSYARAT PERKALIAN MATRIKS : BANYAK KOLOM MATRIKS 1 = BANYAK BARIS MATRIKS 2!");
+	else{
 		int matriks1[baris1][kolom1], matriks2[baris2][kolom2], hasil[baris1][kolom2], jumlah = 0;
 		printf("\nMASUKKAN MATRIKS 1 :\n");
 		for(int i=0; i<baris1; i++){
@@ -409,6 +405,7 @@ int kali(){ // Untuk Perkalian Matriks
 		}
 	}
 }
+
 int detinvers(int pil){ // Untuk Determinan dan Invers Matriks
 	printf("\nSilahkan masukkan pilihan ingin matriks ordo berapa?\n");
 	printf("1. Matriks 2x2                          2. Matriks 3x3\n");
@@ -434,18 +431,13 @@ int detinvers(int pil){ // Untuk Determinan dan Invers Matriks
 		float dtr=dtrm(pilihan, matriks1);
 	    if(pil == 4) printf("\nHasil Determinan Matriks 2x2 = %.2f", dtr);
 		else if(pil == 5){
-			if(dtr==0){
-				printf("\nMATRIKS YANG DIINPUT MERUPAKAN MATRIKS SINGULAR ATAU MATRIKS YANG TIDAK MEMILIKI INVERS");
-			}else{
-				printf("\nHasil Invers Matriks 2x2:\n");
+			if(dtr==0) printf("\nMATRIKS YANG DIINPUT MERUPAKAN MATRIKS SINGULAR ATAU MATRIKS YANG TIDAK MEMILIKI INVERS");
+			else{
+				printf("\nHasil Invers Matriks 2x2 :\n");
 				for(int i=1; i>=0; i--){
 					for(int j=1; j>=0; j--){
-						if(i==j){
-							printf("%.2f\t", matriks1[j][i]/dtr);
-						}
-						else{
-							printf("%.2f\t", -matriks1[j][i]/dtr);
-						}
+						if(i==j) printf("%.2f\t", matriks1[j][i]/dtr);
+						else printf("%.2f\t", -matriks1[j][i]/dtr);
 					}
 					printf("\n");
 				}
@@ -469,10 +461,9 @@ int detinvers(int pil){ // Untuk Determinan dan Invers Matriks
 		float dtr=dtrm(pilihan, matriks1);
         if(pil == 4) printf("\nHasil Determinan Matriks 3x3 = %.2f", dtr);
 		else if(pil == 5){
-			if(dtr==0){
-			printf("\nMATRIKS YANG DIINPUT MERUPAKAN MATRIKS SINGULAR ATAU MATRIKS YANG TIDAK MEMILIKI INVERS");
-			}else{
-				printf("\nHasil Invers Matriks 3x3:\n");
+			if(dtr==0) printf("\nMATRIKS YANG DIINPUT MERUPAKAN MATRIKS SINGULAR ATAU MATRIKS YANG TIDAK MEMILIKI INVERS");
+			else{
+				printf("\nHasil Invers Matriks 3x3 :\n");
 				for(int i=0; i<3; i++){
 					for(int j=0; j<3; j++){
 						printf("%.2f\t", (matriks1[(j+1)%3][(i+1)%3]*matriks1[(j+2)%3][(i+2)%3]-matriks1[(j+1)%3][(i+2)%3]*matriks1[(j+2)%3][(i+1)%3])/dtr);
@@ -481,19 +472,14 @@ int detinvers(int pil){ // Untuk Determinan dan Invers Matriks
 				}
 			}
 		}
-	}else if(pilihan==3){
-		return matriks();
-	}else{
-		return detinvers(pil);
-	}
+	}else if(pilihan==3) return matriks();
+	else return detinvers(pil);
 }
 int transpose(){ // Untuk Transpose Matriks
 	int baris, kolom;
 	printf("Masukkan banyak baris : "); scanf("%d", &baris);
 	printf("Masukkan banyak kolom : "); scanf("%d", &kolom);
-	if(baris==0||kolom==0){
-		return matriks();
-	}
+	if(baris==0||kolom==0) return matriks();
 	int matriks[baris][kolom];
 	printf("\nMASUKKAN MATRIKS ORDO %dx%d:\n", baris, kolom);
 	for(int i=0; i<baris; i++){
@@ -504,14 +490,14 @@ int transpose(){ // Untuk Transpose Matriks
 	printf("\nMatriks yang diinput:\n");
 	for(int i=0; i<baris; i++){
 	    for(int j=0; j<kolom; j++){
-	      printf("%d\t", matriks[i][j]);
+	        printf("%d\t", matriks[i][j]);
 	    }
 	    printf("\n");
 	}
-	printf("\nHasil Transpose matriks diatas:\n");
+	printf("\nHasil Transpose Matriks :\n");
 	for(int i=0; i<kolom; i++){
 	    for(int j=0; j<baris; j++){
-	      printf("%d\t", matriks[j][i]);
+	        printf("%d\t", matriks[j][i]);
 	    }
 	    printf("\n");
 	}
@@ -555,9 +541,6 @@ int matriks(){ // MATRIKS
         system("cls");
         printf("|========Selamat Datang di Kalkulator Transpose Matriks========|\n\n");
         transpose();
-    }else if(pil==7){
-        return main();
-    }else{
-      	return matriks();
-    }
+    }else if(pil==7) return main();
+    else return matriks();
 }
