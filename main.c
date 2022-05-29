@@ -4,7 +4,7 @@
 
 void kalkulator();
 void ekstra_kalkulator(); 
-void menu_bangun_datar(); //Menu Bangun Datar
+int menu_bangun_datar(); //Menu Bangun Datar
 void menu_bangun_ruang(); //Menu Bangun Ruang
 int matriks();
 
@@ -50,7 +50,7 @@ int main(){
         return main();
     }
     loop:
-        printf("\nApakah Anda ingin mengulang? [y/n]: "); scanf(" %c", &ulang); getchat();
+        printf("\nApakah Anda ingin mengulang? [y/n]: "); scanf(" %c", &ulang); getchar();
         if(ulang == 'y' || ulang == 'Y') return main();
         else if(ulang == 'n' || ulang == 'N'){
             printf("\nTerima kasih telah menggunakan program kami^^");
@@ -148,7 +148,7 @@ void ekstra_kalkulator(int a){
 
 }
 
-void menu_bangun_datar(){
+int menu_bangun_datar(){
     system("cls");
     char pilihan,rumus,pil;
     double sisi[4],panjang,lebar,luas,keliling=0,tinggi,alas;
