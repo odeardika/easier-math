@@ -6,6 +6,7 @@ void kalkulator();
 void ekstra_kalkulator(); 
 int menu_bangun_datar(); //Menu Bangun Datar
 void menu_bangun_ruang(); //Menu Bangun Ruang
+double rumus_datar();
 int matriks();
 
 int main(){
@@ -57,7 +58,6 @@ int main(){
             return 0;
         }else goto loop;
 }
-
 void ekstra_kalkulator(int a){
     char pil;
     int banyak = 1;
@@ -147,11 +147,17 @@ void ekstra_kalkulator(int a){
     printf("%.2lf\n", awal);
 
 }
+double rumus_datar(int pil, double a){
+    if(pil == 1) return sqrt(a); // luas menjadi sisi
+    if(pil == 2) return a / 4; //keliling menjadi sisi
+    if(pil = 3) return a * 4; //sisi menjadi keliling
+    if(pil == 4) return a * a; //sisi menjadi luas
+}
 
 int menu_bangun_datar(){
     system("cls");
     char pilihan,rumus,pil;
-    double sisi[4],panjang,lebar,luas,keliling=0,tinggi,alas;
+    double sisi[2],panjang,lebar,luas,keliling=0,tinggi,alas;
     printf("|---- Selamat Datang di Kalkulator Bangun Datar ----|\n\n"
            "Menu :\n"
            "1. Persegi                          5. Trapesium\n"
@@ -165,44 +171,80 @@ int menu_bangun_datar(){
     switch (pilihan)
     {
     case '1':
-        system("cls");
-        printf("|---- Selamat Datang di Kalkulator Persegi ----|\n\n"
-               "Menu:\n"
-               "1. Mencari Luas\n"
-               "2. Mencari Keliling\n"
-               "3. Mencari Sisi (dengan Luas)\n"
-               "4. Mencari Sisi (dengan Keliling)\n"
-               "Pilihan: ");
-        scanf("%c", &rumus);
-        switch (rumus)
+        printf("Masukan Data : \n");
+        printf("Masukan Sisi = ");scanf("%lf", &sisi[0]);
+        printf("Masukan Keliling = ");scanf("%lf", &keliling);
+        printf("Masukan Luas = ");scanf("%lf", &luas);
+        if(sisi[0] == 0)
         {
-        case '1':
-            printf("\nMasukan Sisi = ");
-            scanf("%lf", &sisi[0]);
-            luas = sisi[0] * sisi[0];
-            printf("Luas = %.2lf", luas);
-            break;
-        case '2':
-            printf("\nMasukan Sisi = ");
-            scanf("%lf", &sisi[0]);
-            keliling = sisi[0] * 4;
-            printf("Keliling = %.2lf", keliling);
-            break;
-        case '3':
-            printf("\nMasukan Luas = ");
-            scanf("%lf", &luas);
-            sisi[0] = sqrt(luas);
-            printf("Sisi = %.2lf", sisi[0]);
-            break;
-        case '4':
-            printf("\nMasukan Luas = ");
-            scanf("%lf", &keliling);
-            sisi[0] = keliling / 4;
-            printf("Sisi = %.2lf", sisi[0]);
-            break;
-        default:
-            return menu_bangun_datar();
+            if(luas != 0)
+            {
+                sisi[0] = rumus_datar(1,luas);
+                printf("Diketahui Luas = %.2lf\n", luas);
+                printf("        ______\n");
+                printf("Sisi = / %.2lf\n", luas);
+                printf("     = %.2lf", sisi[0]);
+            }
+            if (keliling != 0)
+            {
+                sisi[0] = rumus_datar(2,keliling);
+                printf("Diketahui Keliling = %.2lf\n", keliling);
+                printf("Sisi = %.2lf / 4 \n",keliling);
+                printf("Sisi = %.2lf\n", sisi[0]);
+            }
         }
+        if(keliling == 0)
+        {
+            keliling = rumus_datar(3,sisi[0]);
+            printf("Diketahui Sisi = %.2lf\n", sisi[0]);
+            printf("Keliling = %.2lf * 4\n", sisi[0]);
+            printf("Keliling = %.2lf\n", keliling);
+        }
+        if(luas == 0)
+        {
+            luas = rumus_datar(4,sisi[0]);
+            printf("Diketahui Sisi = %.2lf\n", sisi[0]);
+            printf("Luas = %.2lf * %.2lf\n", sisi[0], sisi[0]);
+            printf("Luas = %.2lf\n", luas);
+        }
+        // system("cls");
+        // printf("|---- Selamat Datang di Kalkulator Persegi ----|\n\n"
+        //        "Menu:\n"
+        //        "1. Mencari Luas\n"
+        //        "2. Mencari Keliling\n"
+        //        "3. Mencari Sisi (dengan Luas)\n"
+        //        "4. Mencari Sisi (dengan Keliling)\n"
+        //        "Pilihan: ");
+        // scanf("%c", &rumus);
+        // switch (rumus)
+        // {
+        // case '1':
+        //     printf("\nMasukan Sisi = ");
+        //     scanf("%lf", &sisi[0]);
+        //     luas = sisi[0] * sisi[0];
+        //     printf("Luas = %.2lf", luas);
+        //     break;
+        // case '2':
+        //     printf("\nMasukan Sisi = ");
+        //     scanf("%lf", &sisi[0]);
+        //     keliling = sisi[0] * 4;
+        //     printf("Keliling = %.2lf", keliling);
+        //     break;
+        // case '3':
+        //     printf("\nMasukan Luas = ");
+        //     scanf("%lf", &luas);
+        //     sisi[0] = sqrt(luas);
+        //     printf("Sisi = %.2lf", sisi[0]);
+        //     break;
+        // case '4':
+        //     printf("\nMasukan Luas = ");
+        //     scanf("%lf", &keliling);
+        //     sisi[0] = keliling / 4;
+        //     printf("Sisi = %.2lf", sisi[0]);
+        //     break;
+        // default:
+        //     return menu_bangun_datar();
+        //}
         break;
     case '2':
         system("cls");
