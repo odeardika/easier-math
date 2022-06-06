@@ -366,7 +366,15 @@ int menu_bangun_datar(){
 	luas = ( alas * tinggi );
 	printf("Luas = %.2lf", luas);
         break;
-	case '2': 		
+	case '2':
+	printf("\nMasukan Alas = ");
+	scanf("%lf", &alas);
+	printf("\nMasukan Sisi Miring = ");
+	scanf("%lf", &sisimiring);
+	break;
+	default:
+	return menu_bangun_datar();
+	}		
     case '5':
         break;
     case '6':
