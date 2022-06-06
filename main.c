@@ -393,12 +393,142 @@ int menu_bangun_datar(){
 }
 
 void menu_bangun_ruang(){
+	char pilihan, rumus, pil;
+	int i;
+	double s, p, l, t, lp, vol, a1, a2, a3;
+	system("cls");
     printf("|---- Selamat Datang di Kalkulator Bangun Ruang ----|\n\n"
            "Menu :\n"
            "1. Kubus                                   5. Tabung\n"
            "2. Balok                                   6. Kerucut\n"
            "3. Prisma                                  7. Bola\n"
-           "4. Limas                                   8. Kembali\n");
+           "4. Limas                                   8. Kembali\n"
+		   "Pilihan : ");
+	scanf("%c",&pilihan);
+    while(getchar() != '\n');
+    switch (pilihan)
+    {
+    	case '1':
+    		system("cls");
+    		printf("|---- Selamat Datang di Kalkulator Kubus ----|\n\n"
+               "Menu:\n"
+               "1. Mencari Luas Permukaan\n"
+               "2. Mencari Volume\n"
+               "3. Mencari Sisi (dengan Luas Permukaan)\n"
+               "4. Mencari Sisi (dengan Volume)\n"
+               "Pilihan: ");
+    		scanf("%c", &rumus);
+    		switch(rumus)
+    		{
+    			case '1':
+    				printf("Masukkan Sisi: ");
+    				scanf("%lf", &s);
+    				lp = 6*s*s;
+    				printf("Luas Permukaan : %.2lf", lp);
+    				break;
+    			case '2':
+    				printf("Masukkan Sisi: ");
+    				scanf("%lf", &s);
+    				vol = s*s*s;
+    				printf("Volume : %.2f", vol);
+    				break;
+    			case '3':
+    				printf("Masukkan Luas Permukaan: ");
+    				scanf("%lf", &lp);
+    				s = sqrt(lp)/6;
+    				printf("Sisi : %.2lf", s);
+    				break;
+    			case '4':
+    				printf("Masukkan Volume: ");
+    				scanf("%lf", &v);
+    				s = cbrt(v); //cbrt : cubic root (akar pangkat 3)
+    				printf("Sisi : %.2lf", s);
+    				break;
+    			default:
+    				return menu_bangun_ruang();
+			}
+		case '2':
+			system("cls");
+    		printf("|---- Selamat Datang di Kalkulator Balok ----|\n\n"
+               "Menu:\n"
+               "1. Mencari Luas Permukaan\n"
+               "2. Mencari Volume\n"
+               "Pilihan: ");
+    		scanf("%c", &rumus);
+    		switch(rumus)
+    		{
+    			case '1':
+    				printf("Masukkan Panjang: ");
+    				scanf("%lf", &p);
+    				printf("Masukkan Lebar: ");
+    				scanf("%lf", &l);
+    				printf("Masukkan Tinggi: ");
+    				scanf("%lf", &t);
+    				lp = 2*((p*l)*(p*t)*(l*t));
+    				printf("Luas Permukaan : %.2lf", lp);
+    				break;
+    			case '2':
+    				printf("Masukkan Panjang: ");
+    				scanf("%lf", &p);
+    				printf("Masukkan Lebar: ");
+    				scanf("%lf", &l);
+    				printf("Masukkan Tinggi: ");
+    				scanf("%lf", &t);
+    				v = p*l*t;
+    				printf("Volume : %.2lf", v);
+    				break;
+    			default:
+    				return menu_bangun_ruang();
+			}
+		case '3':
+			system("cls");
+    		printf("|---- Selamat Datang di Kalkulator Prisma ----|\n\n"
+               "Pilih Prisma Yang Akan Dicari:\n"
+               "1. Prisma Segitiga\n"
+               "2. Prisma Segilima\n"
+               "3. Prisma Segienam\n"
+               "4. Prisma Segidelapan\n"
+               "Pilihan: ");
+    		scanf("%c", &pil);
+    		switch(pil)
+    		{
+    			case '1':
+    				system("cls");
+    				printf("|---- Selamat Datang di Kalkulator Prisma Segitiga ----|\n\n"
+               				"Menu:\n"
+               				"1. Mencari Luas Permukaan\n"
+               				"2. Mencari Volume\n"
+               				"Pilihan: ");
+    				scanf("%c", &rumus);
+    				switch(rumus)
+    				{
+    					case '1':
+    						printf("Masukkan Sisi Pertama (Alas): "); scanf("%lf", &a1);
+    						printf("Masukkan Sisi Kedua (Tinggi): "); scanf("%lf" &a2);
+    						printf("Masukkan Sisi Ketiga (Miring): "); scanf("%lf", &a3);
+    						printf("Masukkan Tinggi Prisma: "); scanf("%lf", &t);
+    						lp = (a1*a2)+((a1+a2+a3)*t);
+    						printf("Luas Permukaan : %.2lf", lp);
+    						break;
+    					case '2':
+    						printf("Masukkan Alas: "); scanf("%lf", &a1);
+    						printf("Masukkan Tinggi: "); scanf("%lf", &a2);
+    						printf("Masukkan Tinggi: "); scanf("%lf", &t);
+    						v = (a1*a2/2)*t;
+    						printf("Volume : %.2lf", v);
+    						break;
+    					default:
+    						return menu_bangun_ruang();
+    				}
+    			case '2':
+    				
+    							
+    							
+                					
+            }
+						}
+			}
+	}
 }
 
 float dtrm(int pilihan, float matriks1[4][4]){ // Untuk determinan
