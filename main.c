@@ -359,9 +359,9 @@ int menu_bangun_datar(){
         switch (rumus)
 	{
 	case '1':
-	printf("\Masukan Alas = ");
+	printf("\nMasukan Alas = ");
 	scanf("%lf", &alas);
-	printf("\Masukan Tinggi = ");
+	printf("\nMasukan Tinggi = ");
 	scanf("%lf", &tinggi);
 	luas = ( alas * tinggi );
 	printf("Luas = %.2lf", luas);
