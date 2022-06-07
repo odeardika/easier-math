@@ -395,7 +395,7 @@ int menu_bangun_datar(){
 void menu_bangun_ruang(){
 	char pilihan, rumus, pil;
 	int i;
-	double s, p, l, t, lp, vol, a1, a2, a3;
+	double s, p, l, t, lp, vol, a1, a2, a3, r, ls;
 	system("cls");
     printf("|---- Selamat Datang di Kalkulator Bangun Ruang ----|\n\n"
            "Menu :\n"
@@ -521,14 +521,190 @@ void menu_bangun_ruang(){
     						return menu_bangun_ruang();
     				}
     			case '2':
-    				
-    							
-    							
-                					
+    				system("cls");
+    				printf("|---- Selamat Datang di Kalkulator Prisma Segilima ----|\n\n"
+               				"Menu:\n"
+               				"1. Mencari Luas Permukaan\n"
+               				"2. Mencari Volume\n"
+               				"Pilihan: ");
+    				scanf("%c", &rumus);
+    				switch(rumus)
+    				{
+    					case '1':
+    						break;
+    					case '2':
+    						break;
+    					default:
+    						return menu_bangun_ruang();
+					}
+				case '3':
+					system("cls");
+    				printf("|---- Selamat Datang di Kalkulator Prisma Segienam ----|\n\n"
+               				"Menu:\n"
+               				"1. Mencari Luas Permukaan\n"
+               				"2. Mencari Volume\n"
+               				"Pilihan: ");
+    				scanf("%c", &rumus);
+    				switch(rumus)
+    				{
+    					case '1':
+    						break;
+    					case '2':
+    						break;
+    					default:
+    						return menu_bangun_ruang();
+					}
+				case '4':
+					system("cls");
+    				printf("|---- Selamat Datang di Kalkulator Prisma Segidelapan ----|\n\n"
+               				"Menu:\n"
+               				"1. Mencari Luas Permukaan\n"
+               				"2. Mencari Volume\n"
+               				"Pilihan: ");
+    				scanf("%c", &rumus);
+    				switch(rumus)
+    				{
+    					case '1':
+    						break;
+    					case '2':
+    						break;
+    					default:
+    						return menu_bangun_ruang();
+					}
+				default:
+					return menu_bangun_ruang();				
             }
-						}
+    	case '4':
+    		system("cls");
+    		printf("|---- Selamat Datang di Kalkulator Limas ----|\n\n"
+               "Pilih Limas Yang Akan Dicari:\n"
+               "1. Limas Segitiga\n"
+               "2. Limas Segiempat\n"
+               "3. Limas Segilima\n"
+               "4. Limas Segienam\n"
+               "Pilihan: ");
+    		scanf("%c", &pil);
+    		switch(pil)
+    		{
+    			case '1':
+    				break;
+    			case '2':
+    				break;
+    			case '3':
+    				break;
+    			case '4':
+    				break;
+    			default:
+    				return menu_bangun_ruang();
 			}
-	}
+    	case '5':
+    		system("cls");
+    		printf("|---- Selamat Datang di Kalkulator Tabung ----|\n\n"
+               "Menu:\n"
+               "1. Mencari Luas Permukaan\n"
+               "2. Mencari Volume\n"
+               "3. Mencari Luas Selimut\n"
+               "Pilihan: ");
+            scanf("%c", &rumus);
+    		switch(rumus)
+    		{
+    			case '1':
+    				system("cls");
+    				printf("\nApakah Tabung Terdapat Tutup?\n"
+                   			"1. Ya\n"
+                   			"2. Tidak\n"
+                   			"Pilihan: ");
+				    scanf("%c", &pil);
+				    switch(pil)
+				    {
+				    	case '1':
+				    		printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
+				    		printf("Masukkan Tinggi Tabung: "); scanf("%lf", &t);
+				    		lp = 2*3.14*r*(r+t);
+				    		printf("Luas Permukaan : %.2lf", lp);
+				    		break;
+				    	case '2':
+				    		printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
+				    		printf("Masukkan Tinggi Tabung: "); scanf("%lf", &t);
+				    		lp = 3.14*r*(r+2*t);
+				    		printf("Luas Permukaan : %.2lf", lp);
+				    		break;
+				    	default:
+				    		return menu_bangun_ruang;
+					}
+				case '2':
+					printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
+					printf("Masukkan Tinggi Tabung: "); scanf("%lf", &t);
+					v = 3.14*pow(r, 2)*t;
+					printf("Volume : %.2lf", v);
+					break;
+				case '3':
+					printf("Masukkan Jari-Jari: "); scanf("%lf", r);
+					printf("Masukkan Tinggi Tabung: "); scanf("%lf", t);
+					ls = 2*3.14*r*t;
+					printf("Luas Selimut : %.2lf", ls);
+				default:
+					return menu_bangun_ruang();
+			}
+    	case '6':
+    		system("cls");
+    		printf("|---- Selamat Datang di Kalkulator Kerucut ----|\n\n"
+               "Menu:\n"
+               "1. Mencari Luas Permukaan\n"
+               "2. Mencari Volume\n"
+               "3. Mencari Luas Selimut\n"
+               "Pilihan: ");
+            scanf("%c", &rumus);
+    		switch(rumus)
+    		{
+    			case '1':
+    				printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
+    				printf("Masukkan Tinggi Kerucut: "); scanf("%lf", &t);
+    				printf("Masukkan Garis Pelukis: "); scanf("%lf", &s);
+    				lp = 3.14*r*(s+r);
+    				printf("Luas Permukaan : %.2lf", lp);
+    				break;
+    			case '2':
+    				printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
+    				printf("Masukkan Tinggi Kerucut: "); scanf("%lf", &t);
+    				v = 3.14*pow(r,2)*t*1/3;
+    				printf("Volume : %.2lf", v);
+    				break;
+    			case '3':
+    				printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
+    				printf("Masukkan Garis Pelukis: "); scanf("%lf", &s);
+    				ls = 3.14*r*s;
+    				printf("Luas Selimut : %.2lf", ls);
+    				break;
+    			default:
+    				return menu_bangun_ruang();
+			}
+    		break;
+    	case '7':
+    		system("cls");
+    		printf("|---- Selamat Datang di Kalkulator Bola ----|\n\n"
+               "Menu:\n"
+               "1. Mencari Luas Permukaan\n"
+               "2. Mencari Volume\n"
+               "Pilihan: ");
+            scanf("%c", &rumus);
+    		switch(rumus)
+    		{
+    			case '1':
+    				printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
+    				lp = 4*3.14*r;
+    				printf("Luas Permukaan : %.2lf", lp);
+    				break;
+    			case '2':
+    				printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
+    				v = 4/3*3.14*pow(sisi, 3);
+    				printf("Volume : %.2lf", v);
+    				break;
+    			default:
+    				return menu_bangun_ruang();
+			}
+		default:
+			return menu_bangun_ruang();
 }
 
 float dtrm(int pilihan, float matriks1[4][4]){ // Untuk determinan
