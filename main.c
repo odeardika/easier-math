@@ -600,9 +600,9 @@ int menu_bangun_datar(){
         		printf("Luas = %.2f", luas);
         		break;
         	case '2':
-        		printf("Masukkan Salah Satu Panjang Sisi Pendek = ");
+        		printf("Masukkan Salah Satu Panjang Rusuk Pendek = ");
         		scanf("%lf", sisi[0]);
-        		printf("Masukkan Salah Satu Panjang Sisi Panjang = ");
+        		printf("Masukkan Salah Satu Panjang Rusuk Panjang = ");
         		scanf("%lf", sisi[1]);
         		keliling = 2*(sisi[0]+sisi[1]);
         		printf("Keliling = %.2f", keliling);
@@ -617,8 +617,8 @@ int menu_bangun_datar(){
                "Menu:\n"
                "1. Mencari Luas\n"
                "2. Mencari Keliling\n"
-               "3. Mencari Diameter\n"
-               "4. Mencari Jari-Jari\n"
+               "3. Mencari Diameter (Dari Luas)\n"
+               "4. Mencari Jari-Jari (Dari Luas)\n"
                "Pilihan: ");
         scanf("%c", &rumus); getchar();
         switch (rumus)
@@ -636,15 +636,15 @@ int menu_bangun_datar(){
         		printf("Keliling = %.2lf", keliling);
         		break;
         	case '3':
-        		printf("Masukkan Jari-Jari = ");
-        		scanf("%lf", &jari);
-        		diameter = 2*jari;
+        		printf("Masukkan Luas = ");
+        		scanf("%lf", &luas);
+        		diameter = 2*(sqrt(luas/3.14));
         		printf("Diameter = %.2lf", diameter);
         		break;
         	case '4':
-        		printf("Masukkan Diameter = ");
-        		scanf("%lf", &diameter);
-        		jari = diameter/2;
+        		printf("Masukkan Luas = ");
+        		scanf("%lf", &luas);
+        		jari = sqrt(luas/3.14);
         		printf("Jari-Jari = %.2lf", jari);
         		break;
         	default:
@@ -969,7 +969,7 @@ int menu_bangun_ruang(){
     				break;
     			case '2':
     				printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
-    				// vol = 4/3*3.14*pow(sisi, 3);
+    				vol = 4/3*3.14*pow(s, 3);
     				printf("Volume : %.2lf", vol);
     				break;
     			default:
