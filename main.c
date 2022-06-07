@@ -151,7 +151,7 @@ void ekstra_kalkulator(int a){
 int menu_bangun_datar(){
     system("cls");
     char pilihan,rumus,pil;
-    double sisi[4],panjang,lebar,luas,keliling=0,tinggi,alas;
+    double sisi[4],panjang,lebar,luas,keliling=0,tinggi,alas,jari,diameter,d1,d2;
     printf("|---- Selamat Datang di Kalkulator Bangun Datar ----|\n\n"
            "Menu :\n"
            "1. Persegi                          5. Trapesium\n"
@@ -349,7 +349,7 @@ int menu_bangun_datar(){
         }
         break;
     case '4':
-	system("cls");a=
+		system("cls");
         printf("|---- Selamat Datang di Kalkulator Jajar Genjang ----|\n\n"
                "Menu:\n"
                "1. Mencari Luas\n"
@@ -357,31 +357,160 @@ int menu_bangun_datar(){
                "Pilihan: ");
         scanf("%c", &rumus); getchar();
         switch (rumus)
-	{
-	case '1':
-	printf("\nMasukan Alas = ");
-	scanf("%lf", &alas);
-	printf("\nMasukan Tinggi = ");
-	scanf("%lf", &tinggi);
-	luas = ( alas * tinggi );
-	printf("Luas = %.2lf", luas);
-        break;
-	case '2':
-	printf("\nMasukan Alas = ");
-	scanf("%lf", &alas);
-	printf("\nMasukan Sisi Miring = ");
-	scanf("%lf", &sisimiring);
-	break;
-	default:
-	return menu_bangun_datar();
-	}		
+		{
+			case '1':
+				printf("\nMasukan Alas = ");
+				scanf("%lf", &alas);
+				printf("\nMasukan Tinggi = ");
+				scanf("%lf", &tinggi);
+				luas = alas*tinggi;
+				printf("Luas = %.2lf", luas);
+       			break;
+			case '2':
+				printf("\nMasukan Alas (Panjang) = ");
+				scanf("%lf", &panjang);
+				printf("\nMasukan Sisi Miring (Lebar) = ");
+				scanf("%lf", &lebar);
+				keliling = 2*(panjang+lebar);
+				printf("Keliling = %.2f", keliling);
+				break;
+			default:
+				return menu_bangun_datar();
+		}
+		break;		
     case '5':
+    	system("cls");
+        printf("|---- Selamat Datang di Kalkulator Trapesium ----|\n\n"
+               "Menu:\n"
+               "1. Mencari Luas\n"
+               "2. Mencari Keliling\n"
+               "Pilihan: ");
+        scanf("%c", &rumus); getchar();
+        switch(rumus)
+        {
+        	case '1':
+        		printf("Masukkan Panjang Rusuk Yang Sejajar (Atas) = ");
+        		scanf("%lf", sisi[0]);
+        		printf("Masukkan Panjang Rusuk Yang Sejajar (Bawah) = ");
+        		scanf("%lf", sisi[1]);
+        		printf("Masukkan Tinggi Trapesium = ");
+        		scanf("%lf", t);
+        		luas = (sisi[0]+sisi[1])*t/2;
+        		printf("Luas = %.2f", luas);
+        		break;
+        	case '2':
+        		printf("Masukkan Panjang Rusuk Atas = ");
+        		scanf("%lf", sisi[0]);
+        		printf("Masukkan Panjang Rusuk Bawah = ");
+        		scanf("%lf", sisi[1]);
+        		printf("Masukkan Panjang Rusuk Kiri = ");
+        		scanf("%lf", sisi[2]);
+        		printf("Masukkan Panjang Rusuk Kanan = ");
+        		scanf("%lf", sisi[3]);
+        		keliling = sisi[0]+sisi[1]+sisi[2]+sisi[3];
+        		printf("Keliling = %.2lf", keliling);
+        		break;
+        	default:
+        		return menu_bangun_datar();
+		}
         break;
     case '6':
+    	system("cls");
+        printf("|---- Selamat Datang di Kalkulator Belah Ketupat ----|\n\n"
+               "Menu:\n"
+               "1. Mencari Luas\n"
+               "2. Mencari Keliling\n"
+               "Pilihan: ");
+        scanf("%c", &rumus); getchar();
+        switch (rumus)
+        {
+        	case '1':
+        		printf("Masukkan Panjang Diagonal 1 = ");
+        		scanf("%lf", &d1);
+        		printf("Masukkan Panjang Diagonal 2 = ");
+        		scanf("%lf", &d2);
+        		luas = d1*d2*1/2;
+        		printf("Luas = %.2f", luas);
+        		break;
+        	case '2':
+        		printf("Masukkan Sisi = ");
+        		scanf("%lf", sisi[0]);
+        		keliling = 4*sisi[0];
+        		printf("Keliling = %.2f", keliling);
+        		break;
+        	default:
+        		return menu_bangun_datar();
+		}
         break;
     case '7':
+    	system("cls");
+        printf("|---- Selamat Datang di Kalkulator Layang-Layang ----|\n\n"
+               "Menu:\n"
+               "1. Mencari Luas\n"
+               "2. Mencari Keliling\n"
+               "Pilihan: ");
+        scanf("%c", &rumus); getchar();
+        switch (rumus)
+        {
+        	case '1':
+        		printf("Masukkan Panjang Diagonal 1 = ");
+        		scanf("%lf", &d1);
+        		printf("Masukkan Panjang Diagonal 2 = ");
+        		scanf("%lf", &d2);
+        		luas = d1*d2*1/2;
+        		printf("Luas = %.2f", luas);
+        		break;
+        	case '2':
+        		printf("Masukkan Salah Satu Panjang Sisi Pendek = ");
+        		scanf("%lf", sisi[0]);
+        		printf("Masukkan Salah Satu Panjang Sisi Panjang = ");
+        		scanf("%lf", sisi[1]);
+        		keliling = 2*(sisi[0]+sisi[1]);
+        		printf("Keliling = %.2f", keliling);
+        		break;
+        	default:
+        		return menu_bangun_datar();
+		}
         break;
     case '8':
+    	system("cls");
+        printf("|---- Selamat Datang di Kalkulator Lingkaran ----|\n\n"
+               "Menu:\n"
+               "1. Mencari Luas\n"
+               "2. Mencari Keliling\n"
+               "3. Mencari Diameter\n"
+               "4. Mencari Jari-Jari\n"
+               "Pilihan: ");
+        scanf("%c", &rumus); getchar();
+        switch (rumus)
+        {
+        	case '1':
+        		printf("Masukkan Jari-Jari = ");
+        		scanf("%lf", &jari);
+        		luas = 3.14*pow(jari,2);
+        		printf("Luas = %.2f", luas);
+        		break;
+        	case '2':
+        		printf("Masukkan Jari-Jari = ");
+        		scanf("%lf", &jari);
+        		keliling = 2*3.14*r;
+        		printf("Keliling = %.2lf", keliling);
+        		break;
+        	case '3':
+        		printf("Masukkan Jari-Jari = ");
+        		scanf("%lf", &jari);
+        		diameter = 2*r;
+        		printf("Diameter = %.2lf", diameter);
+        		break;
+        	case '4':
+        		printf("Masukkan Diameter = ");
+        		scanf("%lf", &diameter);
+        		jari = diameter/2;
+        		printf("Jari-Jari = %.2lf", jari);
+        		break;
+        	default:
+        		return menu_bangun_datar();
+		}
         break;
     case '9':
         return main();
@@ -389,7 +518,6 @@ int menu_bangun_datar(){
     default:
         return menu_bangun_datar();
     }
-
 }
 
 void menu_bangun_ruang(){
@@ -447,6 +575,7 @@ void menu_bangun_ruang(){
     			default:
     				return menu_bangun_ruang();
 			}
+			break;
 		case '2':
 			system("cls");
     		printf("|---- Selamat Datang di Kalkulator Balok ----|\n\n"
@@ -480,6 +609,7 @@ void menu_bangun_ruang(){
     			default:
     				return menu_bangun_ruang();
 			}
+			break;
 		case '3':
 			system("cls");
     		printf("|---- Selamat Datang di Kalkulator Prisma ----|\n\n"
@@ -574,6 +704,7 @@ void menu_bangun_ruang(){
 				default:
 					return menu_bangun_ruang();				
             }
+            break;
     	case '4':
     		system("cls");
     		printf("|---- Selamat Datang di Kalkulator Limas ----|\n\n"
@@ -597,6 +728,7 @@ void menu_bangun_ruang(){
     			default:
     				return menu_bangun_ruang();
 			}
+			break;
     	case '5':
     		system("cls");
     		printf("|---- Selamat Datang di Kalkulator Tabung ----|\n\n"
@@ -646,6 +778,7 @@ void menu_bangun_ruang(){
 				default:
 					return menu_bangun_ruang();
 			}
+			break;
     	case '6':
     		system("cls");
     		printf("|---- Selamat Datang di Kalkulator Kerucut ----|\n\n"
@@ -703,6 +836,7 @@ void menu_bangun_ruang(){
     			default:
     				return menu_bangun_ruang();
 			}
+			break;
 		default:
 			return menu_bangun_ruang();
 }
