@@ -417,7 +417,7 @@ void menu_bangun_ruang(){
                "3. Mencari Sisi (dengan Luas Permukaan)\n"
                "4. Mencari Sisi (dengan Volume)\n"
                "Pilihan: ");
-    		scanf("%c", &rumus);
+    		scanf("%c", &rumus); getchar();
     		switch(rumus)
     		{
     			case '1':
@@ -454,7 +454,7 @@ void menu_bangun_ruang(){
                "1. Mencari Luas Permukaan\n"
                "2. Mencari Volume\n"
                "Pilihan: ");
-    		scanf("%c", &rumus);
+    		scanf("%c", &rumus); getchar();
     		switch(rumus)
     		{
     			case '1':
@@ -489,7 +489,7 @@ void menu_bangun_ruang(){
                "3. Prisma Segienam\n"
                "4. Prisma Segidelapan\n"
                "Pilihan: ");
-    		scanf("%c", &pil);
+    		scanf("%c", &pil); getchar();
     		switch(pil)
     		{
     			case '1':
@@ -499,7 +499,7 @@ void menu_bangun_ruang(){
                				"1. Mencari Luas Permukaan\n"
                				"2. Mencari Volume\n"
                				"Pilihan: ");
-    				scanf("%c", &rumus);
+    				scanf("%c", &rumus); getchar();
     				switch(rumus)
     				{
     					case '1':
@@ -527,7 +527,7 @@ void menu_bangun_ruang(){
                				"1. Mencari Luas Permukaan\n"
                				"2. Mencari Volume\n"
                				"Pilihan: ");
-    				scanf("%c", &rumus);
+    				scanf("%c", &rumus); getchar();
     				switch(rumus)
     				{
     					case '1':
@@ -544,7 +544,7 @@ void menu_bangun_ruang(){
                				"1. Mencari Luas Permukaan\n"
                				"2. Mencari Volume\n"
                				"Pilihan: ");
-    				scanf("%c", &rumus);
+    				scanf("%c", &rumus); getchar();
     				switch(rumus)
     				{
     					case '1':
@@ -561,7 +561,7 @@ void menu_bangun_ruang(){
                				"1. Mencari Luas Permukaan\n"
                				"2. Mencari Volume\n"
                				"Pilihan: ");
-    				scanf("%c", &rumus);
+    				scanf("%c", &rumus); getchar();
     				switch(rumus)
     				{
     					case '1':
@@ -583,7 +583,7 @@ void menu_bangun_ruang(){
                "3. Limas Segilima\n"
                "4. Limas Segienam\n"
                "Pilihan: ");
-    		scanf("%c", &pil);
+    		scanf("%c", &pil); getchar();
     		switch(pil)
     		{
     			case '1':
@@ -605,7 +605,7 @@ void menu_bangun_ruang(){
                "2. Mencari Volume\n"
                "3. Mencari Luas Selimut\n"
                "Pilihan: ");
-            scanf("%c", &rumus);
+            scanf("%c", &rumus); getchar();
     		switch(rumus)
     		{
     			case '1':
@@ -614,7 +614,7 @@ void menu_bangun_ruang(){
                    			"1. Ya\n"
                    			"2. Tidak\n"
                    			"Pilihan: ");
-				    scanf("%c", &pil);
+				    scanf("%c", &pil); getchar();
 				    switch(pil)
 				    {
 				    	case '1':
@@ -654,7 +654,7 @@ void menu_bangun_ruang(){
                "2. Mencari Volume\n"
                "3. Mencari Luas Selimut\n"
                "Pilihan: ");
-            scanf("%c", &rumus);
+            scanf("%c", &rumus); getchar();
     		switch(rumus)
     		{
     			case '1':
@@ -687,7 +687,7 @@ void menu_bangun_ruang(){
                "1. Mencari Luas Permukaan\n"
                "2. Mencari Volume\n"
                "Pilihan: ");
-            scanf("%c", &rumus);
+            scanf("%c", &rumus); getchar();
     		switch(rumus)
     		{
     			case '1':
