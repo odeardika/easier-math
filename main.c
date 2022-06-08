@@ -69,7 +69,6 @@ int main(){
 
 void kalkulator(int a){
     char pil;
-    int banyak = 1;
     double awal, penambah, hasil;
     if(a == 1) //kalkulator biasa
     {
@@ -169,15 +168,21 @@ void kalkulator(int a){
         }
         if(pil == '%')
         {
-            hasil = awal/100;
-            fprintf(Fptr, "\n%.2lf% = %.2lf", awal,hasil);
+            printf("Berapa persen : ");
+            scanf("%lf", &penambah);
+            hasil = awal * (penambah/100);
+            fprintf(Fptr, "\n%.2lf * %.2lf% = %.2lf", awal,penambah,hasil);
+        }
+        if(pil == 'l')
+        {
+            hasil = log(awal);
+            fprintf(Fptr, "\nlog(%.2lf) = %.2lf", awal,hasil);
         }
         if(pil == '=')
         {
             goto end;
         }
     printf("%.2lf\n", hasil);
-    banyak++;
     awal = hasil;
     }
     end :
