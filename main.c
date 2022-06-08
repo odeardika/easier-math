@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-void kalkulator();
+
 void ekstra_kalkulator(); 
 double rumus_datar();
 int menu_bangun_datar(); //Menu Bangun Datar
@@ -73,7 +73,7 @@ void ekstra_kalkulator(int a){
     double awal, penambah, hasil;
     if(a == 1) //kalkulator biasa
     {
-        printf("Menu Kalkulator : \n");
+        printf("Menu Kalkulator ( + - * / = ) : \n");
     }
     if(a == 2) //kalkulator ekstra
     {
@@ -399,7 +399,9 @@ int menu_bangun_datar(){
                 printf("Luas = (%.2lf * %.2lf) / 2\n", sisi[0],sisi[1]);
                 printf("Luas = %.2lf\n\n", luas);
             }
-            
+            printf("Tinggi Segitiga = %.2lf\n", sisi[0]);
+            printf("Alas Segitiga = %.2lf\n", sisi[1]);
+            printf("Sisi Miring Segitiga = %.2lf\n", sisi[2]);
         }
         if(segitiga == 2)
         {
@@ -457,6 +459,8 @@ int menu_bangun_datar(){
                 printf("Luas = (%.2lf * %.2lf) / 2\n", sisi[0],sisi[1]);
                 printf("Luas = %.2lf\n\n", luas);
             }
+            printf("Sisi Miring Segitiga = %.2lf\n", sisi[0]);
+            printf("Alas Segitiga = %.2lf\n", sisi[1]);
         }
         if (segitiga == 3)
         {
@@ -493,7 +497,10 @@ int menu_bangun_datar(){
                 printf("Luas = (%.2lf * %.2lf) / 2\n", sisi[0],sisi[0]);
                 printf("Luas = %.2lf\n\n", luas);
             }
+            printf("Sisi Segitiga = %.2lf\n", sisi[0]);
         }
+        printf("Keliling Segitiga = %.2lf\n", keliling);
+        printf("Luas Segitiga = %.2lf\n", luas);
         break;
     case '4':
 		system("cls");
