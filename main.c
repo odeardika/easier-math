@@ -1611,9 +1611,12 @@ void history(){
                 printf("Belum ada riwayat\n");
                 fclose(file2);
             }
-            while(fgets(temp,225,file2) != NULL)
+            else
             {
-                printf("%s", temp);
+                while(fgets(temp,225,file2) != NULL)
+                {
+                    printf("%s", temp);
+                }    
             }
             fclose(file2);
         break;
