@@ -104,28 +104,28 @@ void kalkulator(int a){
         } 
         if(pil == '-')
         {
-            printf("Masukan Angka Penambah : ");
+            printf("Masukan Angka Pengurangan : ");
             scanf("%lf", &penambah);
             hasil = awal - penambah;
             fprintf(Fptr, "\n %.2lf - %.2lf = %.2lf",awal,penambah,hasil);
         }
         if(pil == '*')
         {
-            printf("Masukan Angka Penambah : ");
+            printf("Masukan Angka Pengalian : ");
             scanf("%lf", &penambah);
             hasil = awal * penambah;
             fprintf(Fptr, "\n %.2lf x %.2lf = %.2lf",awal, penambah,hasil);
         }
         if(pil == '/')
         {
-            printf("Masukan Angka Penambah : ");
+            printf("Masukan Angka Pembagi : ");
             scanf("%lf", &penambah);
             hasil = awal / penambah;
             fprintf(Fptr, "\n %.2lf : %.2lf = %.2lf",awal, penambah,hasil);
         }
         if(pil == '^')
         {
-            printf("Masukan Pangkat : ");
+            printf("Mau Dipangkatkan berapa : ");
             scanf("%lf", &penambah);
             hasil = pow(awal,penambah);
             fprintf(Fptr, "\n %.2lf^%.2lf = %.2lf",awal, penambah,hasil);
@@ -136,6 +136,36 @@ void kalkulator(int a){
             fprintf(Fptr, "\n  ______");
             fprintf(Fptr, "\n\\/%.2lf   = %.2lf", awal,hasil);
             
+        }
+        if(pil == 's')
+        {
+            hasil = sin(awal);
+            fprintf(Fptr, "\nsin(%.2lf) = %.2lf", awal,hasil);
+        }
+        if(pil == 'c')
+        {
+            hasil = cos(awal);
+            fprintf(Fptr, "\ncos(%.2lf) = %.2lf", awal,hasil);
+        }
+        if(pil == 't')
+        {
+            hasil = tan(awal);
+            fprintf(Fptr, "\ntan(%.2lf) = %.2lf", awal,hasil);
+        }
+        if(pil == 'S')
+        {
+            hasil = asin(awal);
+            fprintf(Fptr, "\n-sin(%.2lf) = %.2lf", awal,hasil);
+        }
+        if(pil == 'C')
+        {
+            hasil = acos(awal);
+            fprintf(Fptr, "\n-cos(%.2lf) = %.2lf", awal,hasil);
+        }
+        if(pil == 'T')
+        {
+            hasil = atan(awal);
+            fprintf(Fptr, "\n-tan(%.2lf) = %.2lf", awal,hasil);
         }
         if(pil == '%')
         {
