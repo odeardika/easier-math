@@ -218,7 +218,7 @@ double rumus_datar(int pil, double a, double b, double c, double d){
 }
 int menu_bangun_datar(){
     system("cls");
-    char pilihan,rumus,pil;
+    char pilihan;
 	int segitiga;
     double sisi[4] = {0,0,0,0},luas = 0,keliling = 0,tinggi,jari,diameter;
     printf("|---- Selamat Datang di Kalkulator Bangun Datar ----|\n\n"
@@ -986,14 +986,14 @@ int menu_bangun_datar(){
 			{
 				luas = rumus_datar(22,jari,0,0,0);
 				printf("Diketahui Jari-Jari = %.2lf\n", jari);
-				printf("Luas = 3.14 * pow(%.2lf,2)\n", jari);
+				printf("Luas = 3.14 * %.2lf * %.2lf\n", jari,jari);
 				printf("Luas = %.2lf\n\n", luas);
 			}
 			else if(diameter != 0)
 			{
 				luas = rumus_datar(23,diameter,0,0,0);
 				printf("Diketahui Diameter = %.2lf\n", diameter);
-				printf("Luas = 3.14 * pow(%.2lf,2) / 4\n", diameter);
+				printf("Luas = 3.14 * %.2lf * %.2lf / 4\n", diameter,diameter);
 				printf("Luas = %.2lf\n\n", luas);
 			}
 		}
