@@ -8,6 +8,7 @@ double rumus_datar();
 int menu_bangun_datar(); //Menu Bangun Datar
 int menu_bangun_ruang(); //Menu Bangun Ruang
 int matriks();
+void history();
 
 int main(){
     double hasil;
@@ -21,7 +22,9 @@ int main(){
            "1. Kalkulator\n"
            "2. Bangun Datar\n"
            "3. Bangun Ruang\n"
-           "4. Matriks\n");
+           "4. Matriks\n"
+           "5. History\n"
+           "6. Keluar\n");
     char pilihan,kal,ulang;
     printf("Pilihan: ");
     scanf("%c", &pilihan);
@@ -46,6 +49,11 @@ int main(){
         break;
     case '4' :
         matriks();
+        break;
+    case '5' :
+        history();
+        break;
+    case '6' :
         break;
     default:
         return main();
@@ -1238,4 +1246,36 @@ int matriks(){ // MATRIKS
         transpose();
     }else if(pil==7) return main();
     else return matriks();
+}
+
+void history(){
+    char pilihan;
+    system("cls");
+    printf("Menu Riwayat\n");
+    printf("1. Lihat Riwayat Kalkulator\n2. Hapus Riwayat\n");
+    printf("Masukan Pilihan: ");scanf("%c", &pilihan);
+    switch (pilihan)
+    {
+    case '1':
+        printf("=== Riwayat Dari Kalkulator ===\n");
+            FILE *file2 = fopen("History_Kalkulator.txt", "r");
+            char temp[255];
+            if(file2 == NULL)
+            {
+                printf("Belum ada riwayat\n");
+                fclose(file2);
+            }
+            while(fgets(temp,225,file2) != NULL)
+            {
+                printf("%s", temp);
+            }
+            fclose(file2);
+        break;
+    case '2':
+        if (remove("History_Kalkulator.txt") == 0) printf("Riwayat telah dihapus\n");
+        else printf("Riwayat tidak ditemukan\n");
+        break;
+    default:
+        break;
+    }
 }
