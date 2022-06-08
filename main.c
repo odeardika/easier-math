@@ -1322,7 +1322,7 @@ int menu_bangun_ruang(){
     				break;
     			case '2':
     				printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
-    				vol = 4/3*3.14*pow(s, 3);
+    				vol = 3.14*pow(r, 3)*4/3;
     				printf("Volume : %.2lf", vol);
     				break;
     			default:
