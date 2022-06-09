@@ -557,9 +557,9 @@ int menu_bangun_datar(){
             }
             if(luas == 0)
             {
-                luas = rumus_datar(11,sisi[0],sisi[0],0,0);
+                luas = rumus_datar(11,sisi[1],sisi[0],0,0);
                 printf("Diketahui Sisi = %.2lf\n", sisi[0]);
-                printf("Luas = (%.2lf * %.2lf) / 2\n", sisi[0],sisi[0]);
+                printf("Luas = (%.2lf * %.2lf) / 2\n", sisi[0],sisi[1]);
                 printf("Luas = %.2lf\n\n", luas);
             }
             printf("Sisi Segitiga = %.2lf\n", sisi[0]);
