@@ -296,6 +296,7 @@ int menu_bangun_datar(){
                 if (keliling != 0)
                 {
                     sisi[0] = rumus_datar(6,keliling,sisi[1],0,0);
+                    printf("Diketahui Lebar = %.2lf\n", sisi[1]);
                     printf("Diketahui Keliling = %.2lf\n", keliling);
                     printf("Panjang = (%.2lf / 2) - %.2lf\n", keliling,sisi[1]);
                     printf("Panjang = %.2lf\n\n", sisi[0]);
@@ -303,8 +304,9 @@ int menu_bangun_datar(){
                 if (luas != 0)
                 {
                     sisi[0] = rumus_datar(5,luas,sisi[1],0,0);
+                    printf("Diketahui Lebar = %.2lf\n", sisi[1]);
                     printf("Diketahui Luas = %.2lf\n", luas);
-                    printf("Panjang = (%.2lf / 2) - %.2lf\n", luas,sisi[1]);
+                    printf("Panjang = %.2lf / %.2lf\n", luas,sisi[1]);
                     printf("Panjang = %.2lf\n\n", sisi[0]);
                 }  
             }
@@ -316,6 +318,7 @@ int menu_bangun_datar(){
                 if (keliling != 0)
                 {
                     sisi[1] = rumus_datar(6,keliling,sisi[0],0,0);
+                    printf("Diketahui Panjang = %.2lf\n", sisi[0]);
                     printf("Diketahui Keliling = %.2lf\n", keliling);
                     printf("Lebar = (%.2lf / 2) - %.2lf\n", keliling,sisi[0]);
                     printf("Lebar = %.2lf\n\n", sisi[1]);
@@ -323,8 +326,9 @@ int menu_bangun_datar(){
                 if (luas != 0)
                 {
                     sisi[1] = rumus_datar(5,luas,sisi[0],0,0);
+                    printf("Diketahui Panjang = %.2lf\n", sisi[0]);
                     printf("Diketahui Luas = %.2lf\n", luas);
-                    printf("Lebar = (%.2lf / 2) - %.2lf\n", luas,sisi[0]);
+                    printf("Lebar = %.2lf / %.2lf\n", luas,sisi[0]);
                     printf("Lebar = %.2lf\n\n", sisi[1]);
                 }  
             }
