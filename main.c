@@ -1334,7 +1334,7 @@ int menu_bangun_ruang(){
 					t = rumus_ruang(10,vol,r,0,0);
 					printf("Diketahui Volume = %.2lf\n", vol);
 					printf("Diketahui Jari-Jari = %.2lf\n", r);
-					printf("Tinggi = %.2lf / 3.14 * pow (%.2lf,2)\n", vol,r);
+					printf("Tinggi = %.2lf / 3.14 * (%.2lf * %.2lf)\n", vol,r,r);
 					printf("Tinggi = %.2lf\n\n", t);
 				}
 			}
@@ -1370,7 +1370,8 @@ int menu_bangun_ruang(){
 				vol = rumus_ruang(14,r,t,0,0);
 				printf("Diketahui Jari-Jari = %.2lf\n", r);
 				printf("Diketahui Tinggi = %.2lf\n", t);
-				printf("Volume = 3.14 * pow(%.2lf, 2) * %.2lf\n", r,t);
+				printf("Volume = 3.14 * (%.2lf * %.2lf) * %.2lf\n", r,r,t);
+                printf("Volume = %.2lf\n\n", vol);
 			}
 			printf("Data dari Tabung :\n");
 	        printf("Jari-Jari dari Tabung = %.2lf\n", r);
