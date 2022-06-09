@@ -33,6 +33,7 @@ int main(){
     switch (pilihan)
     {
     case '1':
+    	system("cls");
         printf("Pilih Kalkulator\n"
                "1. Kalkulator\n"
                "2. Kalkulator Ekstra\n"
@@ -1535,6 +1536,8 @@ int menu_bangun_ruang(){
 	        printf("Volume dari Bola = %.2lf\n", vol);
 	        system("pause");
 	        break;
+	    case '8':
+	    	return main();
 	    default :
 	    	return menu_bangun_ruang();
 	}
