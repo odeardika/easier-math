@@ -774,7 +774,7 @@ int menu_bangun_datar(){
         }
         if(luas == 0)
         {
-            luas = rumus_datar(16,sisi[0],sisi[2],tinggi,0);
+            luas = rumus_datar(16,sisi[0],sisi[1],tinggi,0);
             printf("Diketahui Rusuk Atas = %.2lf\n", sisi[0]);
             printf("Diketahui Rusuk Bawah = %.2lf\n", sisi[1]);
             printf("Diketahui Tinggi = %.2lf\n", tinggi);
