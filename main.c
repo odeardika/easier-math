@@ -335,7 +335,7 @@ int menu_bangun_datar(){
         }
         if(keliling == 0)
         {
-            keliling = rumus_datar(3,sisi[1],sisi[2],0,0);
+            keliling = rumus_datar(3,sisi[1],sisi[0],0,0);
             printf("Diketahui Panjang = %.2lf\n", sisi[0]);
             printf("Diketahui Lebar = %.2lf\n", sisi[1]);
             printf("keliling = (%.2lf + %.2lf) * 2\n", sisi[0],sisi[1]);
@@ -1279,8 +1279,8 @@ int menu_bangun_ruang(){
 	        printf("Masukan Jari-Jari = "); scanf("%lf", &r);
 	        printf("Masukan Tinggi = "); scanf("%lf", &t);
 	        printf("Masukan Luas Permukaan = "); scanf("%lf", &lp);
+            printf("Masukkan Luas Selimut = "); scanf("%lf", &ls);
 	        printf("Masukan Volume = "); scanf("%lf", &vol);
-	        printf("Masukkan Luas Selimut = "); scanf("%lf", &ls);
 	        printf("\n");
 	        printf("Menu Tabung Yang Tersedia :\n1. Dengan Tutup\n2.Tanpa Tutup\n");
 	        printf("Pilih Jenis Tabung No Berapa: ");scanf("%d", &tab);
