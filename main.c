@@ -368,8 +368,9 @@ int menu_bangun_datar(){
             printf("Masukan Sisi Miring = ");scanf("%lf",&sisi[2]);
         }
         if(segitiga == 2){
-            printf("Masukan Sisi Miring = ");scanf("%lf",&sisi[0]);
+            printf("Masukan Tinggi = ");scanf("%lf",&sisi[0]);
             printf("Masukan Alas = ");scanf("%lf", &sisi[1]); 
+            printf("Masukan Sisi Miring = ");scanf("%lf",&sisi[2]);
         }
         if(segitiga == 3){
             printf("Masukan Sisi = ");scanf("%lf", &sisi[0]);
@@ -458,21 +459,13 @@ int menu_bangun_datar(){
         {
             if(sisi[0] == 0)
             {
-                if(keliling != 0)
-                {
-                    sisi[0] = rumus_datar(9,keliling,sisi[1],0,0)/2;
-                    printf("Diketahui Alas = %.2lf\n", sisi[1]);
-                    printf("Diketahui Keliling = %.2lf\n", keliling);
-                    printf("Sisi Miring = (%.2lf - %.2lf) / 2\n", keliling,sisi[1]);
-                    printf("Sisi Miring = %.2lf\n\n", sisi[0]);
-                }
                 if(luas != 0)
                 {
                     sisi[0] = rumus_datar(10,luas,sisi[1],0,0);
                     printf("Diketahui Alas = %.2lf\n", sisi[1]);
                     printf("Diketahui Luas = %.2lf\n", luas);
-                    printf("Sisi Miring = (%.2lf * 2) / %.2lf\n", luas,sisi[1]);
-                    printf("Sisi Miring = %.2lf\n\n", sisi[0]);    
+                    printf("Tinggi = (%.2lf * 2) / %.2lf\n", luas,sisi[1]);
+                    printf("Tinggi = %.2lf\n\n", sisi[0]);    
                 }
             }
             if(sisi[1] == 0)
@@ -480,7 +473,7 @@ int menu_bangun_datar(){
                 if(keliling != 0)
                 {
                     sisi[1] = rumus_datar(9,keliling,sisi[0],sisi[0],0);
-                    printf("Diketahui Sisi Miring = %.2lf\n", sisi[0]);
+                    printf("Diketahui Sisi Miring = %.2lf\n", sisi[2]);
                     printf("Diketahui Keliling = %.2lf\n", keliling);
                     printf("Alas = %.2lf - (%.2lf * 2)\n", keliling,sisi[0]);
                     printf("Alas = %.2lf\n\n", sisi[1]);
@@ -488,30 +481,42 @@ int menu_bangun_datar(){
                 if(luas != 0)
                 {
                     sisi[1] = rumus_datar(10,luas,sisi[0],0,0);
-                    printf("Diketahui Sisi Miring = %.2lf\n", sisi[0]);
+                    printf("Diketahui Tinggi = %.2lf\n", sisi[0]);
                     printf("Diketahui Luas = %.2lf\n", luas);
                     printf("Alas = (%.2lf * 2) / %.2lf\n", luas,sisi[0]);
                     printf("Alas = %.2lf\n\n", sisi[1]);
                 }
             }
+            if (sisi[2] == 0)
+            {
+                if (keliling != 0)
+                {
+                    sisi[2] = rumus_datar(9,keliling,sisi[1],0,0)/2;
+                    printf("Diketahui Alas = %.2lf\n", sisi[1]);
+                    printf("Diketahui Keliling = %.2lf\n", keliling);
+                    printf("Sisi Miring = (%.2lf - %.2lf) / 2\n", keliling,sisi[2]);
+                    printf("Sisi Miring = %.2lf\n\n", sisi[2]);
+                }
+            }
             if(keliling == 0)
             {
-                keliling = rumus_datar(7,sisi[0],sisi[1],sisi[0],0);
-                printf("Diketahui Sisi Miring = %.2lf\n", sisi[0]);
+                keliling = rumus_datar(7,sisi[2],sisi[1],sisi[2],0);
+                printf("Diketahui Sisi Miring = %.2lf\n", sisi[2]);
                 printf("Diketahui Alas = %.2lf\n", sisi[1]);
-                printf("keliling = %.2lf + %.2lf + %.2lf\n", sisi[0],sisi[0],sisi[2]);
+                printf("keliling = %.2lf + %.2lf + %.2lf\n", sisi[2],sisi[1],sisi[2]);
                 printf("Keliling = %.2lf\n\n", keliling);
             }
             if(luas == 0)
             {
                 luas = rumus_datar(11,sisi[0],sisi[1],0,0);
-                printf("Diketahui Sisi Miring = %.2lf\n", sisi[0]);
+                printf("Diketahui Tinggi = %.2lf\n", sisi[0]);
                 printf("Diketahui Alas = %.2lf\n", sisi[1]);
                 printf("Luas = (%.2lf * %.2lf) / 2\n", sisi[0],sisi[1]);
                 printf("Luas = %.2lf\n\n", luas);
             }
-            printf("Sisi Miring Segitiga = %.2lf\n", sisi[0]);
+            printf("Sisi Miring Segitiga = %.2lf\n", sisi[2]);
             printf("Alas Segitiga = %.2lf\n", sisi[1]);
+            printf("Tinggi Segitiga = %.2lf\n", sisi[0]);
         }
         if (segitiga == 3)
         {
