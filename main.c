@@ -374,6 +374,7 @@ int menu_bangun_datar(){
         }
         if(segitiga == 3){
             printf("Masukan Sisi = ");scanf("%lf", &sisi[0]);
+            printf("Masukan Tinggi = ");scanf("%lf", &sisi[1]);
         }
         printf("Masukan Keliling = ");scanf("%lf", &keliling);
         printf("Masukan Luas = ");scanf("%lf", &luas);
@@ -526,17 +527,25 @@ int menu_bangun_datar(){
                 {
                     sisi[0] = rumus_datar(8,keliling,0,0,0);
                     printf("Diketahui Keliling = %.2lf\n", keliling);
-                    printf("Sisi = %.2lf / 3\n", keliling,sisi[0],sisi[2]);
+                    printf("Sisi = %.2lf / 3\n", keliling);
                     printf("Sisi = %.2lf\n\n", sisi[0]);
                 }
                 if(luas != 0)
                 {
-                    sisi[0] = rumus_datar(1,luas*2,0,0,0);
+                    sisi[0] = rumus_datar(10,luas,sisi[1],0,0);
                     printf("Diketahui Luas = %.2lf\n", luas);
-                    printf("        ______________\n");
-                    printf("Sisi = / (%.2lf * 2)\n", luas);
+                    printf("Diketahui Tinggi = %.2lf\n", sisi[1]);
+                    printf("Sisi = (%.2lf * 2) / %.2lf\n", luas,sisi[1]);
                     printf("Sisi = %.2lf\n\n", sisi[0]);
                 }
+            }
+            if(sisi[1] == 0)
+            {
+                sisi[0] = rumus_datar(10,luas,sisi[0],0,0);
+                printf("Diketahui Luas = %.2lf\n", luas);
+                printf("Diketahui Sisi = %.2lf\n", sisi[0]);
+                printf("Tinggi = (%.2lf * 2) / %.2lf\n", luas,sisi[0]);
+                printf("Tinggi = %.2lf\n\n", sisi[1]);    
             }
             if(keliling == 0)
             {
@@ -554,6 +563,7 @@ int menu_bangun_datar(){
                 printf("Luas = %.2lf\n\n", luas);
             }
             printf("Sisi Segitiga = %.2lf\n", sisi[0]);
+            printf("Tinggi Segitiga = %.2lf\n", sisi[0]);
         }
         printf("Keliling Segitiga = %.2lf\n", keliling);
         printf("Luas Segitiga = %.2lf\n", luas);
