@@ -473,10 +473,10 @@ int menu_bangun_datar(){
             {
                 if(keliling != 0)
                 {
-                    sisi[1] = rumus_datar(9,keliling,sisi[0],sisi[0],0);
+                    sisi[1] = rumus_datar(9,keliling,sisi[2],sisi[2],0);
                     printf("Diketahui Sisi Miring = %.2lf\n", sisi[2]);
                     printf("Diketahui Keliling = %.2lf\n", keliling);
-                    printf("Alas = %.2lf - (%.2lf * 2)\n", keliling,sisi[0]);
+                    printf("Alas = %.2lf - (%.2lf * 2)\n", keliling,sisi[2]);
                     printf("Alas = %.2lf\n\n", sisi[1]);
                 }
                 if(luas != 0)
@@ -495,7 +495,7 @@ int menu_bangun_datar(){
                     sisi[2] = rumus_datar(9,keliling,sisi[1],0,0)/2;
                     printf("Diketahui Alas = %.2lf\n", sisi[1]);
                     printf("Diketahui Keliling = %.2lf\n", keliling);
-                    printf("Sisi Miring = (%.2lf - %.2lf) / 2\n", keliling,sisi[2]);
+                    printf("Sisi Miring = (%.2lf - %.2lf) / 2\n", keliling,sisi[1]);
                     printf("Sisi Miring = %.2lf\n\n", sisi[2]);
                 }
             }
