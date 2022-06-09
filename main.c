@@ -5,6 +5,7 @@
 
 void kalkulator(); 
 double rumus_datar();
+double rumus_ruang();
 int menu_bangun_datar(); //Menu Bangun Datar
 int menu_bangun_ruang(); //Menu Bangun Ruang
 int matriks();
@@ -1011,11 +1012,38 @@ int menu_bangun_datar(){
         return menu_bangun_datar();
     }
 }
-
+double rumus_ruang(int pil, double a, double b, double c, double d){
+	if(pil == 1) return sqrt(a / 6); //luas permukaan menjadi sisi kubus
+	if(pil == 2) return cbrt(a); //volume menjadi sisi kubus
+	if(pil == 3) return 6 * pow(a, 2); //sisi menjadi luas permukaan kubus
+	if(pil == 4) return pow(a, 3); //sisi menjadi volume kubus
+	if(pil == 5) return ((a / 2) - b * c) / (b + c); //mencari panjang/lebar/tinggi dari luas permukaan balok
+	if(pil == 6) return a / b * c; //mencari panjang/lebar/tinggi dari volume balok
+	if(pil == 7) return 2 * ((a * b) + (a * c) + (b * c)); //panjang, lebar, dan tinggi menjadi luas permukaan balok
+	if(pil == 8) return a * b * c; //panjang, lebar, dan tinggi menjadi volume balok dan volume prisma
+	if(pil == 9) return sqrt(a / 3.14 * b); //mencari jari-jari dari volume tabung
+	if(pil == 10) return a / 3.14 * pow (b,2); //mencari tinggi dari volume tabung
+	if(pil == 11) return a / 2 * 3.14 * b; //mencari jari-jari/tinggi dari luas selimut tabung
+	if(pil == 12) return 2 * 3.14 * a * (a + b); //luas permukaan tabung dengan tutup
+	if(pil == 13) return 3.14 * a * (a + 2 * b); //luas permukaan tabung tanpa tutup
+	if(pil == 14) return 3.14 * pow(a, 2) * b; //volume tabung
+	if(pil == 15) return 2 * 3.14 * a * b; //luas selimut tabung dan kerucut
+	if(pil == 16) return sqrt(a / 4 * 3.14); //mencari jari-jari dari luas permukaan bola
+	if(pil == 17) return cbrt(3 * a / 4 * 3.14); //mencari jari-jari dari volume bola
+	if(pil == 18) return 4 * 3.14 * a; //luas permukaan bola
+	if(pil == 19) return 3.14 * pow(a, 3) * 4/3; //volume bola
+	if(pil == 20) return sqrt(3 * a / 3.14 * b); //mencari jari-jari dari volume kerucut
+	if(pil == 21) return a / 3.14 * b; //mencari jari-jari dan garis pelukis dari luas selimut kerucut
+	if(pil == 22) return a * 3 / 3.14 * pow(b,2); //mencari tinggi dari volume kerucut
+	if(pil == 23) return sqrt(pow(a,2) + pow(b,2)); //mencari garis pelukis dari jari-jari dan tinggi kerucut
+	if(pil == 24) return sqrt(pow(a,2) - pow(b,2)); //mencari jari-jari dan tinggi kerucut jika diketahui garis pelukis kerucut 
+	if(pil == 25) return 3.14 * a * (a + b); //luas permukaan kerucut
+	if(pil == 26) return 3.14 * pow(a,2) * b / 3; //volume kerucut
+}
 int menu_bangun_ruang(){
-	char pilihan, rumus, pil;
-	int i;
-	double s, p, l, t, lp, vol, a1, a2, a3, r, ls;
+	char pilihan;
+	int tab;
+	double sisi[4]={0,0,0,0}, lp = 0, vol = 0, ls = 0, r = 0, t = 0, s = 0;
 	system("cls");
     printf("|---- Selamat Datang di Kalkulator Bangun Ruang ----|\n\n"
            "Menu :\n"
@@ -1025,312 +1053,470 @@ int menu_bangun_ruang(){
            "4. Limas                                   8. Kembali\n"
 		   "Pilihan : ");
 	scanf("%c",&pilihan);
-    while(getchar() != '\n');
+	while(getchar() != '\n');
     switch (pilihan)
     {
     	case '1':
     		system("cls");
-    		printf("|---- Selamat Datang di Kalkulator Kubus ----|\n\n"
-               "Menu:\n"
-               "1. Mencari Luas Permukaan\n"
-               "2. Mencari Volume\n"
-               "3. Mencari Sisi (dengan Luas Permukaan)\n"
-               "4. Mencari Sisi (dengan Volume)\n"
-               "Pilihan: ");
-    		scanf("%c", &rumus); getchar();
-    		switch(rumus)
-    		{
-    			case '1':
-    				printf("Masukkan Sisi: ");
-    				scanf("%lf", &s);
-    				lp = 6*s*s;
-    				printf("Luas Permukaan : %.2lf", lp);
-    				break;
-    			case '2':
-    				printf("Masukkan Sisi: ");
-    				scanf("%lf", &s);
-    				vol = s*s*s;
-    				printf("Volume : %.2f", vol);
-    				break;
-    			case '3':
-    				printf("Masukkan Luas Permukaan: ");
-    				scanf("%lf", &lp);
-    				s = sqrt(lp)/6;
-    				printf("Sisi : %.2lf", s);
-    				break;
-    			case '4':
-    				printf("Masukkan Volume: ");
-    				scanf("%lf", &vol);
-    				s = cbrt(vol); //cbrt : cubic root (akar pangkat 3)
-    				printf("Sisi : %.2lf", s);
-    				break;
-    			default:
-    				return menu_bangun_ruang();
-			}
-			break;
-		case '2':
-			system("cls");
-    		printf("|---- Selamat Datang di Kalkulator Balok ----|\n\n"
-               "Menu:\n"
-               "1. Mencari Luas Permukaan\n"
-               "2. Mencari Volume\n"
-               "Pilihan: ");
-    		scanf("%c", &rumus); getchar();
-    		switch(rumus)
-    		{
-    			case '1':
-    				printf("Masukkan Panjang: ");
-    				scanf("%lf", &p);
-    				printf("Masukkan Lebar: ");
-    				scanf("%lf", &l);
-    				printf("Masukkan Tinggi: ");
-    				scanf("%lf", &t);
-    				lp = 2*((p*l)*(p*t)*(l*t));
-    				printf("Luas Permukaan : %.2lf", lp);
-    				break;
-    			case '2':
-    				printf("Masukkan Panjang: ");
-    				scanf("%lf", &p);
-    				printf("Masukkan Lebar: ");
-    				scanf("%lf", &l);
-    				printf("Masukkan Tinggi: ");
-    				scanf("%lf", &t);
-    				vol = p*l*t;
-    				printf("Volume : %.2lf", vol);
-    				break;
-    			default:
-    				return menu_bangun_ruang();
-			}
-			break;
-		case '3':
-			system("cls");
-    		printf("|---- Selamat Datang di Kalkulator Prisma ----|\n\n"
-               "Pilih Prisma Yang Akan Dicari:\n"
-               "1. Prisma Segitiga\n"
-               "2. Prisma Segilima\n"
-               "3. Prisma Segienam\n"
-               "4. Prisma Segidelapan\n"
-               "Pilihan: ");
-    		scanf("%c", &pil); getchar();
-    		switch(pil)
-    		{
-    			case '1':
-    				system("cls");
-    				printf("|---- Selamat Datang di Kalkulator Prisma Segitiga ----|\n\n"
-               				"Menu:\n"
-               				"1. Mencari Luas Permukaan\n"
-               				"2. Mencari Volume\n"
-               				"Pilihan: ");
-    				scanf("%c", &rumus); getchar();
-    				switch(rumus)
-    				{
-    					case '1':
-    						printf("Masukkan Sisi Pertama (Alas): "); scanf("%lf", &a1);
-    						printf("Masukkan Sisi Kedua (Tinggi): "); scanf("%lf", &a2);
-    						printf("Masukkan Sisi Ketiga (Miring): "); scanf("%lf", &a3);
-    						printf("Masukkan Tinggi Prisma: "); scanf("%lf", &t);
-    						lp = (a1*a2)+((a1+a2+a3)*t);
-    						printf("Luas Permukaan : %.2lf", lp);
-    						break;
-    					case '2':
-    						printf("Masukkan Alas: "); scanf("%lf", &a1);
-    						printf("Masukkan Tinggi: "); scanf("%lf", &a2);
-    						printf("Masukkan Tinggi: "); scanf("%lf", &t);
-    						vol = (a1*a2/2)*t;
-    						printf("Volume : %.2lf", vol);
-    						break;
-    					default:
-    						return menu_bangun_ruang();
-    				}
-    			case '2':
-    				system("cls");
-    				printf("|---- Selamat Datang di Kalkulator Prisma Segilima ----|\n\n"
-               				"Menu:\n"
-               				"1. Mencari Luas Permukaan\n"
-               				"2. Mencari Volume\n"
-               				"Pilihan: ");
-    				scanf("%c", &rumus); getchar();
-    				switch(rumus)
-    				{
-    					case '1':
-    						break;
-    					case '2':
-    						break;
-    					default:
-    						return menu_bangun_ruang();
+	        printf("|---- Selamat Datang di Kalkulator Kubus ----|\n\n");
+	        printf("Masukan Data : \n");
+	        printf("Masukan Sisi = "); scanf("%lf", &sisi[0]);
+	        printf("Masukan Luas Permukaan = "); scanf("%lf", &lp);
+	        printf("Masukan Volume = "); scanf("%lf", &vol);
+	        printf("\n");
+	        if(sisi[0] == 0)
+	        {
+	            if(lp != 0)
+	            {
+	                sisi[0] = rumus_ruang(1,lp,0,0,0);
+	                printf("Diketahui Luas Permukaan = %.2lf\n", lp);
+	                printf("Sisi = sqrt(%.2lf/6)\n", lp);
+	                printf("Sisi = %.2lf\n\n", sisi[0]);
+	            }
+	            if (vol != 0)
+	            {
+	                sisi[0] = rumus_ruang(2,vol,0,0,0);
+	                printf("Diketahui Volume = %.2lf\n", vol);
+	                printf("Sisi = cbrt(%.2lf)\n", vol);
+	                printf("Sisi = %.2lf\n\n", sisi[0]);
+	            }
+	        }
+	        if(lp == 0)
+	        {
+	            lp = rumus_ruang(3,sisi[0],0,0,0);
+	            printf("Diketahui Sisi = %.2lf\n", sisi[0]);
+	            printf("Luas Permukaan = 6 * %.2lf * %.2lf\n", sisi[0], sisi[0]);
+	            printf("Luas Permukaan = %.2lf\n\n", lp);
+	        }
+	        if(vol == 0)
+	        {
+	            vol = rumus_ruang(4,sisi[0],0,0,0);
+	            printf("Diketahui Sisi = %.2lf\n", sisi[0]);
+	            printf("Volume = %.2lf * %.2lf * %.2lf\n", sisi[0], sisi[0], sisi[0]);
+	            printf("Volume = %.2lf\n\n", vol);
+	        }
+	        printf("Data dari Kubus :\n");
+	        printf("Sisi dari Kubus = %.2lf\n", sisi[0]);
+	        printf("Luas Permukaan dari Kubus = %.2lf\n", lp);
+	        printf("Volume dari Kubus = %.2lf\n", vol);
+	        system("pause");
+	        break;
+	    case '2':
+	    	system("cls");
+	        printf("|---- Selamat Datang di Kalkulator Balok ----|\n\n");
+	        printf("Masukan Data : \n");
+	        printf("Masukan Panjang = "); scanf("%lf", &sisi[0]);
+	        printf("Masukan Lebar = "); scanf("%lf", &sisi[1]);
+	        printf("Masukan Tinggi = "); scanf("%lf", &sisi[2]);
+	        printf("Masukan Luas Permukaan = "); scanf("%lf", &lp);
+	        printf("Masukan Volume = "); scanf("%lf", &vol);
+	        printf("\n");
+	        if(sisi[0] == 0)
+	        {
+	            if(sisi[1] != 0)
+	            {
+	            	if(sisi[2] != 0)
+	            	{
+	            		if(lp != 0)
+	            		{
+	            			sisi[0] = rumus_ruang(5,lp,sisi[1],sisi[2],0);
+		                	printf("Diketahui Luas Permukaan = %.2lf\n", lp);
+		                	printf("Diketahui Lebar = %.2lf\n", sisi[1]);
+		                	printf("Diketahui Tinggi = %.2lf\n", sisi[2]);
+		                	printf("Panjang = ((%.2lf / 2) - %.2lf * %.2lf) / %.2lf + %.2lf\n", lp,sisi[1],sisi[2],sisi[1],sisi[2]);
+		                	printf("Panjang = %.2lf\n\n", sisi[0]);
+						}
+	            		else if(vol != 0)
+	            		{
+	            			sisi[0] = rumus_ruang(6,vol,sisi[1],sisi[2],0);
+	            			printf("Diketahui Volume = %.2lf\n", vol);
+	            			printf("Diketahui Lebar = %.2lf\n", sisi[1]);
+		                	printf("Diketahui Tinggi = %.2lf\n", sisi[2]);
+		                	printf("Panjang = %.2lf / %.2lf * %.2lf\n", vol,sisi[1],sisi[2]);
+		                	printf("Panjang = %.2lf\n\n", sisi[0]);
+						}
 					}
-				case '3':
-					system("cls");
-    				printf("|---- Selamat Datang di Kalkulator Prisma Segienam ----|\n\n"
-               				"Menu:\n"
-               				"1. Mencari Luas Permukaan\n"
-               				"2. Mencari Volume\n"
-               				"Pilihan: ");
-    				scanf("%c", &rumus); getchar();
-    				switch(rumus)
-    				{
-    					case '1':
-    						break;
-    					case '2':
-    						break;
-    					default:
-    						return menu_bangun_ruang();
+	            }
+	        }
+	        if(sisi[1] == 0)
+	        {
+	            if(sisi[0] != 0)
+	            {
+	            	if(sisi[2] != 0)
+	            	{
+	            		if(lp != 0)
+	            		{
+	            			sisi[1] = rumus_ruang(5,lp,sisi[0],sisi[2],0);
+		                	printf("Diketahui Luas Permukaan = %.2lf\n", lp);
+		                	printf("Diketahui Panjang = %.2lf\n", sisi[0]);
+		                	printf("Diketahui Tinggi = %.2lf\n", sisi[2]);
+		                	printf("Lebar = ((%.2lf / 2) - %.2lf * %.2lf) / %.2lf + %.2lf\n", lp,sisi[0],sisi[2],sisi[0],sisi[2]);
+		                	printf("Lebar = %.2lf\n\n", sisi[1]);
+						}
+	            		else if(vol != 0)
+	            		{
+	            			sisi[1] = rumus_ruang(6,vol,sisi[0],sisi[2],0);
+	            			printf("Diketahui Volume = %.2lf\n", vol);
+	            			printf("Diketahui Panjang = %.2lf\n", sisi[0]);
+		                	printf("Diketahui Tinggi = %.2lf\n", sisi[2]);
+		                	printf("Lebar = %.2lf / %.2lf * %.2lf\n", vol,sisi[0],sisi[2]);
+		                	printf("Lebar = %.2lf\n\n", sisi[1]);
+						}
 					}
-				case '4':
-					system("cls");
-    				printf("|---- Selamat Datang di Kalkulator Prisma Segidelapan ----|\n\n"
-               				"Menu:\n"
-               				"1. Mencari Luas Permukaan\n"
-               				"2. Mencari Volume\n"
-               				"Pilihan: ");
-    				scanf("%c", &rumus); getchar();
-    				switch(rumus)
-    				{
-    					case '1':
-    						break;
-    					case '2':
-    						break;
-    					default:
-    						return menu_bangun_ruang();
+	            }
+	        }
+	        if(sisi[2] == 0)
+	        {
+	            if(sisi[0] != 0)
+	            {
+	            	if(sisi[1] != 0)
+	            	{
+	            		if(lp != 0)
+	            		{
+	            			sisi[2] = rumus_ruang(5,lp,sisi[0],sisi[1],0);
+		                	printf("Diketahui Luas Permukaan = %.2lf\n", lp);
+		                	printf("Diketahui Panjang = %.2lf\n", sisi[0]);
+		                	printf("Diketahui Lebar = %.2lf\n", sisi[1]);
+		                	printf("Tinggi = ((%.2lf / 2) - %.2lf * %.2lf) / %.2lf + %.2lf\n", lp,sisi[0],sisi[1],sisi[0],sisi[1]);
+		                	printf("Tinggi = %.2lf\n\n", sisi[2]);
+						}
+	            		else if(vol != 0)
+	            		{
+	            			sisi[2] = rumus_ruang(6,vol,sisi[0],sisi[1],0);
+	            			printf("Diketahui Volume = %.2lf\n", vol);
+	            			printf("Diketahui Panjang = %.2lf\n", sisi[0]);
+		                	printf("Diketahui Lebar = %.2lf\n", sisi[1]);
+		                	printf("Tinggi = %.2lf / %.2lf * %.2lf\n", vol,sisi[0],sisi[1]);
+		                	printf("Tinggi = %.2lf\n\n", sisi[2]);
+						}
 					}
-				default:
-					return menu_bangun_ruang();				
-            }
-            break;
-    	case '4':
-    		system("cls");
-    		printf("|---- Selamat Datang di Kalkulator Limas ----|\n\n"
-               "Pilih Limas Yang Akan Dicari:\n"
-               "1. Limas Segitiga\n"
-               "2. Limas Segiempat\n"
-               "3. Limas Segilima\n"
-               "4. Limas Segienam\n"
-               "Pilihan: ");
-    		scanf("%c", &pil); getchar();
-    		switch(pil)
-    		{
-    			case '1':
-    				break;
-    			case '2':
-    				break;
-    			case '3':
-    				break;
-    			case '4':
-    				break;
-    			default:
-    				return menu_bangun_ruang();
+	            }
+	        }
+	        if(lp == 0)
+	        {
+	            lp = rumus_ruang(7,sisi[0],sisi[1],sisi[2],0);
+	            printf("Diketahui Panjang = %.2lf\n", sisi[0]);
+	            printf("Diketahui Lebar = %.2lf\n", sisi[1]);
+	            printf("Diketahui Tinggi = %.2lf\n", sisi[2]);
+	            printf("Luas Permukaan = 2 * ((%.2lf * %.2lf) + (%.2lf * %.2lf) + (%.2lf * %.2lf))\n", sisi[0],sisi[1],sisi[0],sisi[2],sisi[1],sisi[2]);
+	            printf("Luas Permukaan = %.2lf\n\n", lp);
+	        }
+	        if(vol == 0)
+	        {
+	            vol = rumus_ruang(8,sisi[0],sisi[1],sisi[2],0);
+	            printf("Diketahui Panjang = %.2lf\n", sisi[0]);
+	            printf("Diketahui Lebar = %.2lf\n", sisi[1]);
+	            printf("Diketahui Tinggi = %.2lf\n", sisi[2]);
+	            printf("Volume = %.2lf * %.2lf * %.2lf\n", sisi[0], sisi[1], sisi[2]);
+	            printf("Volume = %.2lf\n\n", vol);
+	        }
+	        printf("Data dari Balok :\n");
+	        printf("Panjang dari Balok = %.2lf\n", sisi[0]);
+	        printf("Lebar dari Balok = %.2lf\n", sisi[1]);
+	        printf("Tinggi dari Balok = %.2lf\n", sisi[2]);
+	        printf("Luas Permukaan dari Balok = %.2lf\n", lp);
+	        printf("Volume dari Balok = %.2lf\n", vol);
+	        system("pause");
+	        break;
+	    case '3':
+	    	printf("|---- Selamat Datang di Kalkulator Prisma ----|\n\n");
+	        printf("Masukan Data : \n");
+	        printf("Masukan Alas = "); scanf("%lf", &sisi[0]);
+	        printf("Masukan Tinggi = "); scanf("%lf", &sisi[1]);
+	        printf("Masukan Tinggi Prisma = "); scanf("%lf", &sisi[2]);
+	        printf("Masukan Luas Permukaan = "); scanf("%lf", &lp);
+	        printf("Masukan Volume = "); scanf("%lf", &vol);
+	        printf("\n");
+	        if(vol == 0)
+	        {
+	        	vol = rumus_ruang(8,sisi[0],sisi[1],sisi[2],0) / 2;
+	        	printf("Diketahui Alas = %.2lf\n", sisi[0]);
+	        	printf("Diketahui Tinggi = %.2lf\n", sisi[1]);
+	        	printf("Diketahui Tinggi Prisma = %.2lf\n", sisi[2]);
+	        	printf("Volume = %.2lf * %.2lf * %.2lf / 2\n", sisi[0],sisi[1],sisi[2]);
+	        	printf("Volume = %.2lf\n\n", vol);
 			}
-			break;
-    	case '5':
-    		system("cls");
-    		printf("|---- Selamat Datang di Kalkulator Tabung ----|\n\n"
-               "Menu:\n"
-               "1. Mencari Luas Permukaan\n"
-               "2. Mencari Volume\n"
-               "3. Mencari Luas Selimut\n"
-               "Pilihan: ");
-            scanf("%c", &rumus); getchar();
-    		switch(rumus)
-    		{
-    			case '1':
-    				system("cls");
-    				printf("\nApakah Tabung Terdapat Tutup?\n"
-                   			"1. Ya\n"
-                   			"2. Tidak\n"
-                   			"Pilihan: ");
-				    scanf("%c", &pil); getchar();
-				    switch(pil)
-				    {
-				    	case '1':
-				    		printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
-				    		printf("Masukkan Tinggi Tabung: "); scanf("%lf", &t);
-				    		lp = 2*3.14*r*(r+t);
-				    		printf("Luas Permukaan : %.2lf", lp);
-				    		break;
-				    	case '2':
-				    		printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
-				    		printf("Masukkan Tinggi Tabung: "); scanf("%lf", &t);
-				    		lp = 3.14*r*(r+2*t);
-				    		printf("Luas Permukaan : %.2lf", lp);
-				    		break;
-				    	default:
-				    		return menu_bangun_ruang();
+			printf("Data dari Prisma :\n");
+	        printf("Alas dari Prisma = %.2lf\n", sisi[0]);
+	        printf("Tinggi dari Alas Prisma = %.2lf\n", sisi[1]);
+	        printf("Tinggi dari Prisma = %.2lf\n", sisi[2]);
+	        printf("Volume dari Prisma = %.2lf\n", vol);
+	        system("pause");
+	    	break;
+	    case '4':
+	    	printf("|---- Selamat Datang di Kalkulator Limas ----|\n\n");
+	        printf("Masukan Data : \n");
+	        printf("Masukan Alas = "); scanf("%lf", &sisi[0]);
+	        printf("Masukan Tinggi = "); scanf("%lf", &sisi[1]);
+	        printf("Masukan Tinggi Limas = "); scanf("%lf", &sisi[2]);
+	        printf("Masukan Luas Permukaan = "); scanf("%lf", &lp);
+	        printf("Masukan Volume = "); scanf("%lf", &vol);
+	        printf("\n");
+	        if(vol == 0)
+	        {
+	        	vol = rumus_ruang(8,sisi[0],sisi[1],sisi[2],0) / 6;
+	        	printf("Diketahui Alas = %.2lf\n", sisi[0]);
+	        	printf("Diketahui Tinggi = %.2lf\n", sisi[1]);
+	        	printf("Diketahui Tinggi Limas = %.2lf\n", sisi[2]);
+	        	printf("Volume = %.2lf * %.2lf * %.2lf / 6\n", sisi[0],sisi[1],sisi[2]);
+	        	printf("Volume = %.2lf\n\n", vol);
+			}
+			printf("Data dari Limas :\n");
+	        printf("Alas dari Limas = %.2lf\n", sisi[0]);
+	        printf("Tinggi dari Alas Limas = %.2lf\n", sisi[1]);
+	        printf("Tinggi dari Limas = %.2lf\n", sisi[2]);
+	        printf("Volume dari Limas = %.2lf\n", vol);
+	        system("pause");
+	    	break;
+	    case '5':
+	    	system("cls");
+	        printf("|---- Selamat Datang di Kalkulator Tabung ----|\n\n");
+	        printf("Masukan Data : \n");
+	        printf("Masukan Jari-Jari = "); scanf("%lf", &r);
+	        printf("Masukan Tinggi = "); scanf("%lf", &t);
+	        printf("Masukan Luas Permukaan = "); scanf("%lf", &lp);
+	        printf("Masukan Volume = "); scanf("%lf", &vol);
+	        printf("Masukkan Luas Selimut = "); scanf("%lf", &ls);
+	        printf("\n");
+	        printf("Menu Tabung Yang Tersedia :\n1. Dengan Tutup\n2.Tanpa Tutup\n");
+	        printf("Pilih Jenis Tabung No Berapa: ");scanf("%d", &tab);
+	        printf("\n");
+	        if(r == 0)
+	        {
+	        	if(ls != 0)
+	        	{
+	        		r = rumus_ruang(11,ls,t,0,0);
+	        		printf("Diketahui Luas Selimut = %.2lf\n", ls);
+	        		printf("Diketahui Tinggi = %.2lf\n", t);
+	        		printf("Jari-Jari = %.2lf / 2 * 3.14 * %.2lf\n", ls,t);
+	        		printf("Jari-Jari = %.2lf\n\n", r);
+				}
+				else if(vol != 0)
+	        	{
+	        		r = rumus_ruang(9,vol,t,0,0);
+	        		printf("Diketahui Volume = %.2lf\n", vol);
+	        		printf("Diketahui Tinggi = %.2lf\n", t);
+	        		printf("Jari-Jari = akar (%.2lf / 3.14 * %.2lf)\n", vol,t);
+	        		printf("Jari-Jari = %.2lf\n\n", r);
+				}
+			}
+			if(t == 0)
+			{
+				if(ls != 0)
+				{
+					t = rumus_ruang(11,ls,r,0,0);
+					printf("Diketahui Luas Selimut = %.2lf\n", ls);
+					printf("Diketahui Jari-Jari = %.2lf\n", r);
+					printf("Tinggi = %.2lf / 2 * 3.14 * %.2lf\n", ls,r);
+					printf("Tinggi = %.2lf\n\n", t);
+				}
+				else if(vol != 0)
+				{
+					t = rumus_ruang(10,vol,r,0,0);
+					printf("Diketahui Volume = %.2lf\n", vol);
+					printf("Diketahui Jari-Jari = %.2lf\n", r);
+					printf("Tinggi = %.2lf / 3.14 * pow (%.2lf,2)\n", vol,r);
+					printf("Tinggi = %.2lf\n\n", t);
+				}
+			}
+	        if(lp == 0)
+	        {
+	        	if(tab == 1)
+	        	{
+	        		lp = rumus_ruang(9,r,t,0,0);
+	        		printf("Diketahui Jari-Jari = %.2lf\n", r);
+	        		printf("Diketahui Tinggi = %.2lf\n", t);
+	        		printf("Luas Permukaan = 2 * 3.14 * %.2lf * (%.2lf + %.2lf)\n", r,r,t);
+	        		printf("Luas Permukaan = %.2lf\n\n", lp);
+				}
+				if(tab == 2)
+				{
+					lp = rumus_ruang(13,r,t,0,0);
+					printf("Diketahui Jari-Jari = %.2lf\n", r);
+					printf("Diketahui Tinggi = %.2lf\n", t);
+					printf("Luas Permukaan = 3.14 * %.2lf * (%.2lf + 2 * %.2lf)\n", r,r,t);
+					printf("Luas Permukaan = %.2lf\n\n", lp);
+				}
+			}
+			if(ls == 0)
+	        {
+	        	ls = rumus_ruang(15,r,t,0,0);
+	        	printf("Diketahui Jari-Jari = %.2lf\n", r);
+	        	printf("Diketahui Tinggi = %.2lf\n", t);
+	        	printf("Luas Selimut = 2 * 3.14 * %.2lf * %.2lf\n", r,t);
+	        	printf("Luas Selimut = %.2lf\n\n", ls);
+			}
+			if(vol == 0)
+			{
+				vol = rumus_ruang(14,r,t,0,0);
+				printf("Diketahui Jari-Jari = %.2lf\n", r);
+				printf("Diketahui Tinggi = %.2lf\n", t);
+				printf("Volume = 3.14 * pow(%.2lf, 2) * %.2lf\n", r,t);
+			}
+			printf("Data dari Tabung :\n");
+	        printf("Jari-Jari dari Tabung = %.2lf\n", r);
+	        printf("Tinggi dari Tabung = %.2lf\n", t);
+	        printf("Luas Selimut dari Tabung = %.2lf\n", ls);
+	        printf("Luas Permukaan dari Tabung = %.2lf\n", lp);
+	        printf("Volume dari Tabung = %.2lf\n", vol);
+	        system("pause");
+	        break;
+	    case '6':
+	    	system("cls");
+	        printf("|---- Selamat Datang di Kalkulator Kerucut ----|\n\n");
+	        printf("Masukan Data : \n");
+	        printf("Masukan Jari-Jari = "); scanf("%lf", &r);
+	        printf("Masukan Tinggi = "); scanf("%lf", &t);
+	        printf("Masukan Garis Pelukis = "); scanf("%lf", &s);
+	        printf("Masukan Luas Permukaan = "); scanf("%lf", &lp);
+	        printf("Masukan Volume = "); scanf("%lf", &vol);
+	        printf("Masukkan Luas Selimut = "); scanf("%lf", &ls);
+	        printf("\n");
+	        if(r == 0)
+	        {
+	        	if(vol != 0)
+	        	{
+	        		r = rumus_ruang(20,vol,t,0,0);
+	        		printf("Diketahui Volume = %,2lf\n", vol);
+	        		printf("Diketahui Tinggi = %.2lf\n", t);
+	        		printf("Jari-Jari = akar(3 * %.2lf / 3.14 * %.2lf)\n", vol,t);
+	        		printf("Jari-Jari = %.2lf\n\n", r);
+				}
+				else if(s != 0)
+				{
+					if(ls != 0)
+					{
+						r = rumus_ruang(21,ls,s,0,0);
+						printf("Diketahui Luas Selimut = %.2lf\n", ls);
+						printf("Diketahui Garis Pelukis = %.2lf\n", s);
+						printf("Jari-Jari = %.2lf / 3.14 * %.2lf\n", ls,s);
+						printf("Jari-Jari = %.2lf\n\n", r);
 					}
-				case '2':
-					printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
-					printf("Masukkan Tinggi Tabung: "); scanf("%lf", &t);
-					vol = 3.14*pow(r, 2)*t;
-					printf("Volume : %.2lf", vol);
-					break;
-				case '3':
-					printf("Masukkan Jari-Jari: "); scanf("%lf", r);
-					printf("Masukkan Tinggi Tabung: "); scanf("%lf", t);
-					ls = 2*3.14*r*t;
-					printf("Luas Selimut : %.2lf", ls);
-				default:
-					return menu_bangun_ruang();
+					else if(t != 0)
+					{
+						r = rumus_ruang(24,s,t,0,0);
+						printf("Diketahui Garis Pelukis = %.2lf\n", s);
+						printf("Diketahui Tinggi = %.2lf\n", t);
+						printf("Jari-Jari = akar((%.2lf * %.2lf) - (%.2lf * %.2lf))\n", s,s,t,t);
+						printf("Jari-Jari = %.2lf\n\n", r);
+					}
+				}
 			}
-			break;
-    	case '6':
-    		system("cls");
-    		printf("|---- Selamat Datang di Kalkulator Kerucut ----|\n\n"
-               "Menu:\n"
-               "1. Mencari Luas Permukaan\n"
-               "2. Mencari Volume\n"
-               "3. Mencari Luas Selimut\n"
-               "Pilihan: ");
-            scanf("%c", &rumus); getchar();
-    		switch(rumus)
-    		{
-    			case '1':
-    				printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
-    				printf("Masukkan Tinggi Kerucut: "); scanf("%lf", &t);
-    				printf("Masukkan Garis Pelukis: "); scanf("%lf", &s);
-    				lp = 3.14*r*(s+r);
-    				printf("Luas Permukaan : %.2lf", lp);
-    				break;
-    			case '2':
-    				printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
-    				printf("Masukkan Tinggi Kerucut: "); scanf("%lf", &t);
-    				vol = 3.14*pow(r,2)*t*1/3;
-    				printf("Volume : %.2lf", vol);
-    				break;
-    			case '3':
-    				printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
-    				printf("Masukkan Garis Pelukis: "); scanf("%lf", &s);
-    				ls = 3.14*r*s;
-    				printf("Luas Selimut : %.2lf", ls);
-    				break;
-    			default:
-    				return menu_bangun_ruang();
+			if(t == 0)
+			{
+				if(r != 0)
+				{
+					if(vol != 0)
+					{
+						t = rumus_ruang(22,vol,r,0,0);
+						printf("Diketahui Volume = %.2lf\n", vol);
+						printf("Diketahui Jari-Jari = %.2lf\n", r);
+						printf("Tinggi = %.2lf * 3 / 3.14 * %.2lf * %.2lf\n", vol,r,r);
+						printf("Tinggi = %.2lf\n\n", t);
+					}
+					else if(s != 0)
+					{
+						t = rumus_ruang(24,s,r,0,0);
+						printf("Diketahui Garis Pelukis = %.2lf\n", s);
+						printf("Diketahui Jari-Jari = %.2lf\n", r);
+						printf("Tinggi = akar((%.2lf * %.2lf) - (%.2lf * %.2lf))\n", s,s,r,r);
+						printf("Tinggi = %.2lf\n\n", t);
+					}
+				}
 			}
-    		break;
-    	case '7':
-    		system("cls");
-    		printf("|---- Selamat Datang di Kalkulator Bola ----|\n\n"
-               "Menu:\n"
-               "1. Mencari Luas Permukaan\n"
-               "2. Mencari Volume\n"
-               "Pilihan: ");
-            scanf("%c", &rumus); getchar();
-    		switch(rumus)
-    		{
-    			case '1':
-    				printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
-    				lp = 4*3.14*r;
-    				printf("Luas Permukaan : %.2lf", lp);
-    				break;
-    			case '2':
-    				printf("Masukkan Jari-Jari: "); scanf("%lf", &r);
-    				vol = 3.14*pow(r, 3)*4/3;
-    				printf("Volume : %.2lf", vol);
-    				break;
-    			default:
-    				return menu_bangun_ruang();
+			if(s == 0)
+			{
+				if(r != 0)
+				{
+					if(ls != 0)
+					{
+						s = rumus_ruang(21,ls,r,0,0);
+						printf("Diketahui Luas Selimut = %.2lf\n", ls);
+						printf("Diketahui Jari-Jari = %.2lf\n", r);
+						printf("Garis Pelukis = %.2lf / 3.14 * %.2lf\n", ls,r);
+						printf("Garis Pelukis = %.2lf\n\n", s);
+					}
+					else if(t != 0)
+					{
+						s = rumus_ruang(23,r,t,0,0);
+						printf("Diketahui Jari-Jari = %.2lf\n", r);
+						printf("Diketahui Tinggi = %.2lf\n", t);
+						printf("Garis Pelukis = akar((%.2lf * %.2lf) + (%.2lf * %.2lf))\n", r,r,t,t);
+						printf("Garis Pelukis = %.2lf\n\n", s);
+					}
+				}
 			}
-			break;
-		default:
-			return menu_bangun_ruang();
+			if(lp == 0)
+			{
+				lp = rumus_ruang(25,r,s,0,0);
+				printf("Diketahui Jari-Jari = %.2lf\n", r);
+				printf("Diketahui Garis Pelukis = %.2lf\n", s);
+				printf("Luas Permukaan = 3.14 * %.2lf * (%.2lf + %.2lf)\n", r,r,s);
+				printf("Luas Permukaan = %.2lf\n\n", lp);
+			}
+			if(vol == 0)
+			{
+				vol = rumus_ruang(26,r,t,0,0);
+				printf("Diketahui Jari-Jari = %.2lf\n", r);
+				printf("Diketahui Tinggi = %.2lf\n", t);
+				printf("Volume = 3.14 * %.2lf * %.2lf * %.2lf / 3\n", r,r,t);
+				printf("Volume = %.2lf\n\n", vol);
+			}
+			printf("Data dari Kerucut :\n");
+	        printf("Jari-Jari dari Kerucut = %.2lf\n", r);
+	        printf("Tinggi dari Kerucut = %.2lf\n", t);
+	        printf("Luas Selimut dari Kerucut = %.2lf\n", ls);
+	        printf("Luas Permukaan dari Kerucut = %.2lf\n", lp);
+	        printf("Volume dari Kerucut = %.2lf\n", vol);
+	        system("pause");
+	        break;
+	    case '7':
+	    	system("cls");
+	        printf("|---- Selamat Datang di Kalkulator Bola ----|\n\n");
+	        printf("Masukan Data : \n");
+	        printf("Masukan Jari-Jari = "); scanf("%lf", &r);
+	        printf("Masukan Luas Permukaan = "); scanf("%lf", &lp);
+	        printf("Masukan Volume = "); scanf("%lf", &vol);
+	        printf("\n");
+	        if(r == 0)
+	        {
+	        	if(lp != 0)
+	        	{
+	        		r = rumus_ruang(16,lp,0,0,0);
+	        		printf("Diketahui Luas Permukaan = %.2lf\n", lp);
+	        		printf("Jari - Jari = akar(%.2lf / 4 * 3.14)\n", lp);
+	        		printf("Jari - Jari = %.2lf\n\n", r);
+				}
+				else if(vol != 0)
+				{
+					r = rumus_ruang(17,vol,0,0,0);
+	        		printf("Diketahui Volume = %.2lf\n", vol);
+	        		printf("Jari - Jari = akar kubik(3 * a / 4 * 3.14)\n", vol);
+	        		printf("Jari - Jari = %.2lf\n\n", r);
+				}
+			}
+			if(lp == 0)
+			{
+				lp = rumus_ruang(18,r,0,0,0);
+				printf("Diketahui Jari-Jari = %.2lf\n", r);
+				printf("Luas Permukaan = 4 * 3.14 * %.2lf\n", r);
+				printf("Luas Permukaan = %.2lf\n\n", lp);
+			}
+			if(vol == 0)
+			{
+				vol = rumus_ruang(19,r,0,0,0);
+				printf("Diketahui Jari-Jari = %.2lf\n", r);
+				printf("Volume = 3.14 * %.2lf * %.2lf * %.2lf * 4/3\n", r,r,r);
+				printf("Volume = %.2lf\n\n", vol);
+			}
+			printf("Data dari Bola :\n");
+	        printf("Jari-Jari dari Bola = %.2lf\n", r);
+	        printf("Luas Permukaan dari Bola = %.2lf\n", lp);
+	        printf("Volume dari Bola = %.2lf\n", vol);
+	        system("pause");
+	        break;
+	    default :
+	    	return menu_bangun_ruang();
 	}
 }
 
