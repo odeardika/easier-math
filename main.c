@@ -1724,7 +1724,7 @@ int detinvers(int pil){ // Untuk Determinan dan Invers Matriks
 				printf("\nHasil Invers Matriks 3x3 :\n");
 				for(int i=0; i<3; i++){
 					for(int j=0; j<3; j++){
-						printf("%.2f\t", (matriks1[(i+1)%3][(j+1)%3]*matriks1[(i+2)%3][(j+2)%3]-matriks1[(j+1)%3][(i+2)%3]*matriks1[(j+2)%3][(i+1)%3])/dtr);
+						printf("%.2f\t", (matriks1[(j+1)%3][(i+1)%3]*matriks1[(j+2)%3][(i+2)%3]-matriks1[(j+1)%3][(i+2)%3]*matriks1[(j+2)%3][(i+1)%3])/dtr);
 					}
 					printf("\n");
 				}
